@@ -1,2 +1,1 @@
-# javascript_study
-study
+## good good study, day day up! ^_^
