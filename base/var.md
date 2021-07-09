@@ -3,7 +3,7 @@
 ## 1.const
 
 const定义的变量在js中意味着这个变量唯一（即不可以重复定义）且不可修改并且在定义变量时就需要去初始化，如果你在js中重复同一个const变量，及如下所示
-```
+```javascript
  const test="sa";
 		const test="1";
 ```
@@ -12,7 +12,7 @@ const定义的变量在js中意味着这个变量唯一（即不可以重复定�
 Uncaught SyntaxError: Identifier 'test' has already been declared
 ```
 如果你在定义了个const变量后去修改
-```
+```javascript
 const test="sa";
 		test="1";
 ```
@@ -23,7 +23,7 @@ index.1.html:17 Uncaught TypeError: Assignment to constant variable.
 
 ## 2.var
 如果你在js中定义一个var变量，那么在js中可以重复定义但是会出现值覆盖的情形，
-```
+```javascript
 <!DOCTYPE html>
 <html>
 	<head>
@@ -65,7 +65,7 @@ my
 
 ## 3.let
 .let是块级作用域，函数内部使用let定义后，对函数外部无影响。
-```
+```javascript
 <!DOCTYPE html>
 <html>
 	<head>
