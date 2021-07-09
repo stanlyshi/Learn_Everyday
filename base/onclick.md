@@ -72,12 +72,13 @@ Hello Javascript!
 </html> 
 ```
 [点击测试](https://www.w3school.com.cn/tiy/t.asp?f=js_intro_style)
+
 运行前
 ```
 Javascript 能够改变 HTML 元素的样式。
 ```
 运行结果
 ```
-# Javascript 能够改变 HTML 元素的样式。
+**Javascript 能够改变 HTML 元素的样式。**
 ```
 
