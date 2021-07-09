@@ -17,13 +17,13 @@ JavaScript 能够以不同方式“显示”数据：
 ```javascript
 <!DOCTYPE html>
 <html>
-<body>
-<h1>我的第一张网页</h1>
-<p>我的第一个段落</p>
-<script>
-window.alert(5 + 6);
-</script>
-</body>
+  <body>
+    <h1>我的第一张网页</h1>
+    <p>我的第一个段落</p>
+    <script>
+      window.alert(5 + 6);
+    </script>
+  </body>
 </html> 
 ```
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_output_alert)
@@ -43,7 +43,7 @@ window.alert(5 + 6);
     <p id="demo"></p>
     <script>
        document.getElementById("demo").innerHTML = 5 + 6;
-     </script>
+    </script>
   </body>
 </html> 
 ```
