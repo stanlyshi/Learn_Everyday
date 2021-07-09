@@ -122,8 +122,9 @@ document.getElementById("demo").style.display="block";
 <html>
     <body>
         <h2>JavaScript 能够做什么</h2>
-        <p id="demo">JavaScript 能够隐藏 HTML 元素。</p>
-        <button type="button" onclick="document.getElementById('demo').style.display='none'">点击我！</button>
+        <p>JavaScript 能够显示隐藏的 HTML 元素。</p>
+        <p id="demo" style="display:none">Hello JavaScript!</p>
+        <button type="button" onclick="document.getElementById('demo').style.display='block'">点击我！</button>
     </body>
 </html>
 ```
