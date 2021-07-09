@@ -166,7 +166,10 @@ objectName.methodName()
 ```javascript
 name = person.fullName();
 ```
-
+运行结果
+```
+Bill Gates
+```
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_object_method)
 
 如果您*不使用 ()* 访问 fullName 方法，则将返回*函数定义*：
@@ -175,6 +178,10 @@ name = person.fullName();
 
 ```javascript
 name = person.fullName;
+```
+运行结果
+```
+function() { return this.firstName + " " + this.lastName; }
 ```
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_object_function)
