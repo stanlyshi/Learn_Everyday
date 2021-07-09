@@ -4,9 +4,9 @@
 
 汽车有诸如车重和颜色等*属性*，也有诸如启动和停止的*方法*：
 
-| 对象                                                         | 属性                                                         | 方法                                        |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------ |
-| ![car]([porsche.jpg (380×195) (w3school.com.cn)](https://www.w3school.com.cn/i/porsche.jpg)) | car.name = porschecar.model = 911car.length = 4499mmcar.color = white | car.start()car.drive()car.brake()car.stop() |
+| 对象                                              | 属性                                                         | 方法                                                         |
+| :------------------------------------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| ![car](https://www.w3school.com.cn/i/porsche.jpg) | car.name = porsche<br />car.model = 911<br />car.length = 4499mm<br />car.color = white | car.start()<br />car.drive()<br />car.brake()<br />car.stop() |
 
 所有汽车都拥有同样的*属性*，但属性值因车而异。
 
