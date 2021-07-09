@@ -23,7 +23,7 @@ index.1.html:17 Uncaught TypeError: Assignment to constant variable.
 
 ## 2.var
 如果你在js中定义一个var变量，那么在js中可以重复定义但是会出现值覆盖的情形，
-```javascript
+```html
 <!DOCTYPE html>
 <html>
 	<head>
@@ -65,7 +65,7 @@ my
 
 ## 3.let
 .let是块级作用域，函数内部使用let定义后，对函数外部无影响。
-```javascript
+```html
 <!DOCTYPE html>
 <html>
 	<head>
