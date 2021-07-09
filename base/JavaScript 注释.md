@@ -59,9 +59,9 @@ document.getElementById("myP").innerHTML = "我的第一个段落。";
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_comments_3)
 
-**注释：**使用单行注释最为常见。
+>**注释：** 使用单行注释最为常见。
 
-**提示：**注释块常用于官方声明。
+>**提示：** 注释块常用于官方声明。
 
 ## 使用注释来阻止执行
 
