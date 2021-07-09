@@ -105,7 +105,7 @@ var answer = 'How are you!';
 
 您可以通过 var 关键词来声明 JavaScript 变量：
 
-```
+```javascript
 var carName;
 ```
 
@@ -113,13 +113,13 @@ var carName;
 
 如需*赋值*给变量，请使用等号：
 
-```
+```javascript
 carName = "porsche";
 ```
 
 您可以在声明变量时向它赋值：
 
-```
+```javascript
 var carName = "porsche";
 ```
 
@@ -129,7 +129,7 @@ var carName = "porsche";
 
 ### 实例
 
-```
+```html
 <p id="demo"></p>
 
 <script>
@@ -148,7 +148,7 @@ document.getElementById("demo").innerHTML = carName;
 
 以 var 作为语句的开头，并以*逗号*分隔变量：
 
-```
+```javascript
 var person = "Bill Gates", carName = "porsche", price = 15000;
 ```
 
@@ -156,7 +156,7 @@ var person = "Bill Gates", carName = "porsche", price = 15000;
 
 声明可横跨多行：
 
-```
+```javascript
 var person = "Bill Gates",
 carName = "porsche",
 price = 15000;
@@ -174,7 +174,7 @@ price = 15000;
 
 ### 实例
 
-```
+```javascript
 var carName;
 ```
 
@@ -188,7 +188,7 @@ var carName;
 
 ### 实例
 
-```
+```javascript
 var carName = "porsche";
 var carName; 
 ```
@@ -201,7 +201,7 @@ var carName;
 
 ### 实例
 
-```
+```javascript
 var x = 3 + 5 + 8;
 ```
 
@@ -211,7 +211,7 @@ var x = 3 + 5 + 8;
 
 ### 实例
 
-```
+```javascript
 var x = "Bill" + " " + "Gates";
 ```
 
@@ -221,7 +221,7 @@ var x = "Bill" + " " + "Gates";
 
 ### 实例
 
-```
+```javascript
 var x = "8" + 3 + 5;
 ```
 
@@ -233,7 +233,7 @@ var x = "8" + 3 + 5;
 
 ### 实例
 
-```
+```javascript
 var x = 3 + 5 + "8";
 ```
 
