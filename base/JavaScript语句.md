@@ -19,7 +19,7 @@ z = x + y;	// 语句 4
 
 *JavaScript 程序*就是一系列的编程*语句*。
 
-**注释：**在 HTML 中，JavaScript 程序由 web 浏览器执行。
+>**注释：** _在 HTML 中，JavaScript 程序由 web 浏览器执行。
 
 ## JavaScript 语句
 
@@ -41,7 +41,7 @@ document.getElementById("demo").innerHTML = "Hello Kitty.";
 
 这些语句会按照它们被编写的顺序逐一执行。
 
-**注释：**JavaScript 程序（以及 JavaScript 语句）常被称为 JavaScript 代码。
+>**注释：** _JavaScript 程序（以及 JavaScript 语句）常被称为 JavaScript 代码。
 
 ## 分号 ;
 
@@ -67,7 +67,7 @@ a = 5; b = 6; c = a + b;
 
 您可能在网上看到不带分号的例子。
 
-**提示：**以分号结束语句不是必需的，但我们仍然强烈建议您这么做。
+>**提示：** _以分号结束语句不是必需的，但我们仍然强烈建议您这么做。
 
 ## JavaScript 空白字符
 
@@ -120,9 +120,9 @@ function myFunction() {
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_statements_blocks)
 
-**注释：**在本教程中我们为代码块用了 4 个空格的缩进。
+>**注释：** _在本教程中我们为代码块用了 4 个空格的缩进。
 
-**提示：**您将稍后在本教程中学到更多有关函数的内容。
+>**提示：** _您将稍后在本教程中学到更多有关函数的内容。
 
 ## JavaScript 关键词
 
