@@ -14,6 +14,7 @@
 </body>
 </html>
 ```
+![点击测试](https://www.w3school.com.cn/tiy/t.asp?f=js_intro_inner_html)
 运行前
 ```
 Javascript 能够改变 HTML 内容。
