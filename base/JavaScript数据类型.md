@@ -269,7 +269,7 @@ person = undefined;          // 值是 undefined，类型是 undefined
 
 ### 实例
 
-```
+```javascript
 var car = "";                // 值是 ""，类型是 "string"
 ```
 
