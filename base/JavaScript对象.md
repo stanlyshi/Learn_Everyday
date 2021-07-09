@@ -166,27 +166,32 @@ objectName.methodName()
 ```javascript
 name = person.fullName();
 ```
+
 运行结果
+
 ```
 Bill Gates
 ```
+
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_object_method)
 
-如果您*不使用 ()* 访问 fullName 方法，则将返回*函数定义*：
+`如果您不使用 () 访问 fullName 方法，则将返回函数定义`：
 
 ### 实例
 
 ```javascript
 name = person.fullName;
 ```
+
 运行结果
+
 ```
 function() { return this.firstName + " " + this.lastName; }
 ```
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_object_function)
 
-方法实际上是以属性值的形式存储的函数定义。
+`方法实际上是以属性值的形式存储的函数定义`。
 
 ## 请不要把字符串、数值和布尔值声明为对象！
 
