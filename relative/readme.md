@@ -1,4 +1,4 @@
-## github的readm.md使用方法
+## Github的Readme.md使用方法
 
 [演示](https://codechina.csdn.net/mirrors/guodongxiaren/readme?utm_source=csdn_github_accelerator)
 
