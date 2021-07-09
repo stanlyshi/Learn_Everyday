@@ -224,6 +224,7 @@ var x = "Bill" + " " + "Gates";
 ```javascript
 var x = "8" + 3 + 5;
 ```
+`当运算符遇到字符串开始，即将随后需要运算的值转换为字符，做x最后为“835”`
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_variables_add_string_number)
 
@@ -236,6 +237,7 @@ var x = "8" + 3 + 5;
 ```javascript
 var x = 3 + 5 + "8";
 ```
+`当运算符遇到字符串开始，即将随后需要运算的值转换为字符，做x最后为“88”`
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_variables_add_number_string)
 
