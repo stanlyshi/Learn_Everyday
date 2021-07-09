@@ -352,7 +352,7 @@ typeof 运算符可返回以下两种类型之一：
 
 ### 实例
 
-```
+```javascript
 typeof {name:'Bill', age:62} // 返回 "object"
 typeof [1,2,3,4]             // 返回 "object" (并非 "array"，参见下面的注释)
 typeof null                  // 返回 "object"
