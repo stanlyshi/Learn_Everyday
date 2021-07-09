@@ -23,7 +23,7 @@
 
 ### 实例
 
-```
+```javascript
 var x = 7 + 8;
 ```
 
@@ -33,7 +33,7 @@ var x = 7 + 8;
 
 ### 实例
 
-```
+```javascript
 var x = a + b;
 ```
 
@@ -43,7 +43,7 @@ var x = a + b;
 
 ### 实例
 
-```
+```javascript
 var x = (7 + 8) * a;
 ```
 
@@ -63,7 +63,7 @@ var x = (7 + 8) * a;
 
 *加法*运算符（+）加数：
 
-```
+```javascript
 var x = 7;
 var y = 8;
 var z = x + y; 
@@ -75,7 +75,7 @@ var z = x + y;
 
 *减法*运算符（-）减数。
 
-```
+```javascript
 var x = 7;
 var y = 8;
 var z = x - y; 
@@ -87,7 +87,7 @@ var z = x - y;
 
 *乘法*运算符（*）乘数。
 
-```
+```javascript
 var x = 7;
 var y = 8;
 var z = x * y; 
@@ -99,7 +99,7 @@ var z = x * y;
 
 *除法*运算符（/）除数。
 
-```
+```javascript
 var x = 7;
 var y = 2;
 var z = x / y; 
@@ -111,7 +111,7 @@ var z = x / y;
 
 *系数*运算符（%）返回除法的余数。
 
-```
+```javascript
 var x = 7;
 var y = 2;
 var z = x % y; 
@@ -127,7 +127,7 @@ var z = x % y;
 
 *递增*运算符（++）对数值进行递增。
 
-```
+```javascript
 var x = 7;
 x++;
 var z = x;
@@ -139,7 +139,7 @@ var z = x;
 
 *递减*运算符（--）对数值进行递减。
 
-```
+```javascript
 var x = 7;
 x--;
 var z = x; 
@@ -153,7 +153,7 @@ var z = x;
 
 ### 实例
 
-```
+```javascript
 var x = 5;
 var z = x ** 2;          // 结果是 25
 ```
@@ -164,7 +164,7 @@ x ** y 产生的结果与 Math.pow(x,y) 相同:
 
 ### 实例
 
-```
+```javascript
 var x = 5;
 var z = Math.pow(x,2);   // 结果是 25
 ```
@@ -177,7 +177,7 @@ var z = Math.pow(x,2);   // 结果是 25
 
 ### 实例
 
-```
+```javascript
 var x = 200 + 50 * 2;
 ```
 
@@ -195,7 +195,7 @@ var x = 200 + 50 * 2;
 
 ### 实例
 
-```
+```javascript
 var x = (200 + 50) * 2;
 ```
 
@@ -207,7 +207,7 @@ var x = (200 + 50) * 2;
 
 ### 实例
 
-```
+```javascript
 var x = 200 + 50 - 2;
 ```
 
