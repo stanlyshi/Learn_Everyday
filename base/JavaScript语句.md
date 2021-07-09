@@ -19,7 +19,7 @@ z = x + y;	// 语句 4
 
 *JavaScript 程序*就是一系列的编程*语句*。
 
->**注释：** _在 HTML 中，JavaScript 程序由 web 浏览器执行。
+>**注释：**_在 HTML 中，JavaScript 程序由 web 浏览器执行。
 
 ## JavaScript 语句
 
