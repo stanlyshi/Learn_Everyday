@@ -140,7 +140,7 @@ document.getElementById("demo").innerHTML = carName;
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_variables_create)
 
-> **提示：**在脚本的开头声明所有变量是个好习惯！
+> **提示：** 在脚本的开头声明所有变量是个好习惯！
 
 ## 一条语句，多个变量
 
@@ -227,7 +227,7 @@ var x = "8" + 3 + 5;
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_variables_add_string_number)
 
-> **提示：**如果把要给数值放入引号中，其余数值会被视作字符串并被级联。
+> **提示：** 如果把要给数值放入引号中，其余数值会被视作字符串并被级联。
 
 现在试试这个：
 
