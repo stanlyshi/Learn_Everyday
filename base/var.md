@@ -38,8 +38,6 @@ index.1.html:17 Uncaught TypeError: Assignment to constant variable.
 		</div>
 	</body>
 	<script>
-
-
 		var a="my";
 		var b="you"
 		var v = new Vue({
@@ -68,7 +66,6 @@ my
 ## 3.let
 .let是块级作用域，函数内部使用let定义后，对函数外部无影响。
 ```
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -89,8 +86,7 @@ my
 			},
 			methods: {
 				after:function(){
-					let a=3;
-					
+					let a=3;					
 				},
 				before:function(){
 					console.log(this.a)
