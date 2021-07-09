@@ -2,11 +2,10 @@
 
 1.const
 const定义的变量在js中意味着这个变量唯一（即不可以重复定义）且不可修改并且在定义变量时就需要去初始化，如果你在js中重复同一个const变量，及如下所示
-
+'''
  const test="sa";
 		const test="1";
-1
-2
+'''
 则会在运行时报错
 
 Uncaught SyntaxError: Identifier 'test' has already been declared
@@ -65,6 +64,7 @@ index.1.html:17 Uncaught TypeError: Assignment to constant variable.
 
 3let
 .let是块级作用域，函数内部使用let定义后，对函数外部无影响。
+
 '''
 <!DOCTYPE html>
 <html>
@@ -80,7 +80,6 @@ index.1.html:17 Uncaught TypeError: Assignment to constant variable.
 		</div>
 	</body>
 	<script>
-
 		var v = new Vue({
 			data: {
 				name:"hello"
