@@ -28,7 +28,7 @@ JavaScript 能够以不同方式“显示”数据：
 ```
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_output_dom)
 
->_提示：更改 HTML 元素的 innerHTML 属性是在 HTML 中显示数据的常用方法。
+> 提示：更改 HTML 元素的 innerHTML 属性是在 HTML 中显示数据的常用方法。
 
 ## 使用 document.write()
 出于测试目的，使用 document.write() 比较方便：
@@ -46,7 +46,8 @@ JavaScript 能够以不同方式“显示”数据：
 </html> 
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_output_write)
->_注意：在 HTML 文档完全加载后使用 document.write() 将删除所有已有的 HTML ：
+
+>注意：在 HTML 文档完全加载后使用 document.write() 将删除所有已有的 HTML ：
 
 **实例**
 ```javascript
