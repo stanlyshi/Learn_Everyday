@@ -174,7 +174,7 @@ JavaScript 不会把 *VAR* 或 *Var* 译作关键词 *var*。
 first-name, last-name, master-card, inter-city.
 ```
 
-**注释：**JavaScript 中不能使用连字符。它是为减法预留的。
+**注释：** JavaScript 中不能使用连字符。它是为减法预留的。
 
 ### 下划线：
 
