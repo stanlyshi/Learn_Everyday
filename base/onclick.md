@@ -6,7 +6,7 @@ getElementById() 是多个 JavaScript HTML 方法之一。
 ```
 document.getElementById("demo").innerHTML = "Hello JavaScript";
 ```
-_提示：JavaScript 同时接受双引号和单引号！_
+>_提示：JavaScript 同时接受双引号和单引号！_
 
 ```javascript
 <!DOCTYPE html>
