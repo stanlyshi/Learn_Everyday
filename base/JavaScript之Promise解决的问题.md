@@ -141,7 +141,7 @@ function(value) {
 
 每个Promise的实例对象，都有一个then的方法，这个方法就是用来处理之前各种异步逻辑的结果。
 
-then方法可以接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为resolved时调用，第二个回调函数是Promise对象的状态变为rejected时调用。其中，第二个函数是可选的，不一定要提供。这两个函数都接受Promise对象传出的值作为参数。
+`then`方法可以接受两个回调函数作为参数。第一个回调函数是`Promise`对象的状态变为`resolved`时调用，第二个回调函数是`Promise`对象的状态变为`rejected`时调用。其中，`第二个函数是可选的，不一定要提供`。这两个函数都接受`Promise`对象传出的值作为参数。
 下面是一个用Promise对象实现的 Ajax 操作的例子:
 
 ```html
