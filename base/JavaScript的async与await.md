@@ -4,7 +4,7 @@ JavaScript 中的 async/await 是 [AsyncFunction 特性](https://link.segmentfau
 
 我第一次看到 async/await 这组关键字并不是在 JavaScript 语言里，而是在 C# 5.0 的语法中。C# 的 async/await 需要在 .NET Framework 4.5 以上的版本中使用，因此我还很悲伤了一阵——为了要兼容 XP 系统，我们开发的软件不能使用高于 4.0 版本的 .NET Framework。
 
-我之前在[《闲谈异步调用“扁平”化》](https://segmentfault.com/a/1190000003742890) 中就谈到了这个问题。无论是在 C# 还是 JavaScript 中，async/await 都是非常棒的特性，它们也都是非常甜的语法糖。C# 的 async/await 实现离不开 [Task 或 Task\](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1?redirectedfrom=MSDN&view=net-5.0) 类，而 JavaScript 的 async/await 实现，也离不开 [Promise](https://link.segmentfault.com/?url=https%3A%2F%2Fdeveloper.mozilla.org%2Fdocs%2FWeb%2FJavaScript%2FReference%2FGlobal_Objects%2FPromise)。
+我之前在[《闲谈异步调用“扁平”化》](https://segmentfault.com/a/1190000003742890) 中就谈到了这个问题。无论是在 C# 还是 JavaScript 中，async/await 都是非常棒的特性，它们也都是非常甜的语法糖。C# 的 async/await 实现离不开 [Task 或 Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1?redirectedfrom=MSDN&view=net-5.0)  类，而 JavaScript 的 async/await 实现，也离不开 [Promise](https://link.segmentfault.com/?url=https%3A%2F%2Fdeveloper.mozilla.org%2Fdocs%2FWeb%2FJavaScript%2FReference%2FGlobal_Objects%2FPromise)。
 
 现在抛开 C# 和 .NET Framework，专心研究下 JavaScript 的 async/await。
 
