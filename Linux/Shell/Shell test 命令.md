@@ -17,15 +17,15 @@ Shell中的 test 命令用于检查某个条件是否成立，它可以进行数
 
 ## 实例
 
-```
+```shell
 num1=100
 num2=100
-**if** **test** $**[**num1**]** -eq $**[**num2**]**
-**then**
-  **echo** '两个数相等！'
-**else**
-  **echo** '两个数不相等！'
-**fi**
+if test $[num1] -eq $[num2]
+then
+  echo '两个数相等！'
+else
+  echo '两个数不相等！'
+fi
 ```
 
 输出结果：
@@ -38,14 +38,14 @@ num2=100
 
 ## 实例
 
-```
-#!/bin/bash*
+```shell
+#!/bin/bash
 
 a=5
 b=6
 
-result=$**[**a+b**]** *# 注意等号两边不能有空格*
-**echo** "result 为： $result"
+result=$[a+b] # 注意等号两边不能有空格
+echo "result 为： $result"
 ```
 
 结果为:
@@ -67,15 +67,15 @@ result 为： 11
 
 ## 实例
 
-```
+```shell
 num1="ru1noob"
 num2="runoob"
-**if** **test** $num1 = $num2
-**then**
-  **echo** '两个字符串相等!'
-**else**
-  **echo** '两个字符串不相等!'
-**fi**
+if test $num1 = $num2
+then
+  echo '两个字符串相等!'
+else
+  echo '两个字符串不相等!'
+fi
 ```
 
 输出结果：
@@ -102,14 +102,14 @@ num2="runoob"
 
 ## 实例
 
-```
-**cd** **/**bin
-**if** **test** -e .**/****bash**
-**then**
-  **echo** '文件已存在!'
-**else**
-  **echo** '文件不存在!'
-**fi**
+```shell
+cd /bin
+if test -e ./bash
+then
+  echo '文件已存在!'
+else
+  echo '文件不存在!'
+fi
 ```
 
 输出结果：
@@ -122,7 +122,7 @@ num2="runoob"
 
 ## 实例
 
-```
+```shell
 cd /bin
 if test -e ./notFile -o -e ./bash
 then
