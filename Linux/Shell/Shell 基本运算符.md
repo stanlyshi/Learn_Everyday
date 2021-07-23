@@ -64,7 +64,7 @@ echo "两数之和为 : $val"
 ## 实例
 
 ```shell
-#!/bin/bash*
+#!/bin/bash
 
 a=10
 b=20
@@ -136,10 +136,8 @@ a 不等于 b
 
 ## 实例
 
-*
-
 ```shell
-#!/bin/bash*
+#!/bin/bash
 
 a=10
 b=20
@@ -212,9 +210,7 @@ fi
 ## 实例
 
 ```shell
-#!/bin/bash*
-
-
+#!/bin/bash
 
 a=10
 b=20
@@ -271,8 +267,6 @@ fi
 
 ## 实例
 
-*
-
 ```shell
 #!/bin/bash*
 
@@ -321,12 +315,8 @@ fi
 
 ## 实例
 
-*
-
 ```shell
-#!/bin/bash*
-*# author:菜鸟教程*
-*# url:www.runoob.com*
+#!/bin/bash
 
 a="abc"
 b="efg"
@@ -412,10 +402,8 @@ abc : 字符串不为空
 
 ## 实例
 
-*
-
 ```shell
-!/bin/bash*
+#!/bin/bash
 
 file="/var/www/runoob/test.sh"
 if [ -r $file ]
