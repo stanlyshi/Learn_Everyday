@@ -268,7 +268,7 @@ fi
 ## 实例
 
 ```shell
-#!/bin/bash*
+#!/bin/bash
 
 a=10
 b=20
