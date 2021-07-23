@@ -1,6 +1,6 @@
 # sed -i命令详解
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```sh
 [root@www ~]# sed [-nefr] [动作]
@@ -23,8 +23,6 @@ p ：列印，亦即将某个选择的数据印出。通常 p 会与参数 sed -
 s ：取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
 
 
 **sed -i** 就是直接对文本文件进行操作的
@@ -46,9 +44,9 @@ ddd
 #ff
 ```
 
-再看执行这两条命令的区别吧
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
+再看执行这两条命令的区别吧
 
 ```sh
 sed -i 's/d/7523/' /home/1.txt
@@ -64,9 +62,7 @@ sed -i 's/d/7523/g' /home/1.txt
 #ff
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
- 
 
 **去掉 “行首” 带“@”的首字母@**
 
