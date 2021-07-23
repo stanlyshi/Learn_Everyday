@@ -4,7 +4,7 @@ Docker 允许你在容器内运行应用程序， 使用 **docker run** 命令�
 
 输出Hello world
 
-```shell
+```bash
 runoob@runoob:~$ docker run ubuntu:15.10 /bin/echo "Hello world"
 Hello world
 ```
@@ -26,7 +26,7 @@ Hello world
 
 我们通过 docker 的两个参数 -i -t，让 docker 运行的容器实现**"对话"**的能力：
 
-```shell
+```bash
 runoob@runoob:~$ docker run -i -t ubuntu:15.10 /bin/bash
 root@0123ce188bd8:/#
 ```
