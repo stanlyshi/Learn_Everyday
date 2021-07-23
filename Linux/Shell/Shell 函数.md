@@ -26,14 +26,14 @@ shell中函数的定义格式如下：
 ## 实例
 
 ```shell
-#!/bin/bash*
+#!/bin/bash
 
-demoFun**(****)****{**
-  **echo** "这是我的第一个 shell 函数!"
-**}**
-**echo** "-----函数开始执行-----"
+demoFun(){
+  echo "这是我的第一个 shell 函数!"
+}
+echo "-----函数开始执行-----"
 demoFun
-**echo** "-----函数执行完毕-----"
+echo "-----函数执行完毕-----"
 ```
 
 输出结果：
@@ -49,19 +49,19 @@ demoFun
 ## 实例
 
 ```shell
-#!/bin/bash*
+#!/bin/bash
 
-funWithReturn**(****)****{**
-  **echo** "这个函数会对输入的两个数字进行相加运算..."
-  **echo** "输入第一个数字: "
-  **read** aNum
-  **echo** "输入第二个数字: "
-  **read** anotherNum
-  **echo** "两个数字分别为 $aNum 和 $anotherNum !"
-  **return** $**(****(**$aNum+$anotherNum**)****)**
-**}**
+funWithReturn(){
+  echo "这个函数会对输入的两个数字进行相加运算..."
+  echo "输入第一个数字: "
+  read aNum
+  echo "输入第二个数字: "
+  read anotherNum
+  echo "两个数字分别为 $aNum 和 $anotherNum !"
+  return $(($aNum+$anotherNum))
+}
 funWithReturn
-**echo** "输入的两个数字之和为 $? !"
+echo "输入的两个数字之和为 $? !"
 ```
 
 输出类似下面：
@@ -203,7 +203,7 @@ funWithParam 1 2 3 4 5 6 7 8 9 34 73
    0
    ```
 
-   [乱码kun](javascript:;)  乱码kun ly1657282@gmail.com2年前 (2019-07-13)
+   
 
 2. 函数与命令的执行结果可以作为条件语句使用。要注意的是，和 C 语言不同，shell 语言中 0 代表 true，0 以外的值代表 false。
 
@@ -273,4 +273,3 @@ funWithParam 1 2 3 4 5 6 7 8 9 34 73
    之后再用函数的 return 值作为测试，其中 demoFun1 返回值为 0，demoFun2 返回值选择了任意一个和 0 不同的整数，这里为 12。
 
    将函数作为条件语句交给 if 判断，得出返回值为 0 时，依然为 true，而返回值只要不是 0，条件语句都判断为 false。
-   
