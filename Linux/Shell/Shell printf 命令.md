@@ -35,8 +35,6 @@ $
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
  
 printf "%-10s %-8s %-4s\n" 姓名 性别 体重kg  
 printf "%-10s %-8s %-4.2f\n" 郭靖 男 66.1234
@@ -65,8 +63,6 @@ printf "%-10s %-8s %-4.2f\n" 郭芙 女 47.9876
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
  
 # format-string为双引号
 printf "%d %s\n" 1 "abc"
