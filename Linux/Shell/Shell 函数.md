@@ -5,15 +5,15 @@ linux shell 可以用户定义函数，然后在shell脚本中可以随便调用
 shell中函数的定义格式如下：
 
 ```shell
-[** **function** **]** funname **[****(****)****]**
+[ function ] funname [()]
 
-**{**
+{
 
   action;
 
-  **[****return** int;**]**
+  [return int;]
 
-**}
+}
 ```
 
 说明：
@@ -273,3 +273,4 @@ funWithParam 1 2 3 4 5 6 7 8 9 34 73
    之后再用函数的 return 值作为测试，其中 demoFun1 返回值为 0，demoFun2 返回值选择了任意一个和 0 不同的整数，这里为 12。
 
    将函数作为条件语句交给 if 判断，得出返回值为 0 时，依然为 true，而返回值只要不是 0，条件语句都判断为 false。
+   
