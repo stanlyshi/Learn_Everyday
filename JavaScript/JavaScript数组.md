@@ -345,23 +345,23 @@ var y = person[0];              // person[0] 将返回 undefined
 
 ## 数组和对象的区别
 
-在 JavaScript 中，*数组*使用*数字索引*。
+在 JavaScript 中，`数组使用数字索引`。
 
-在 JavaScript 中，*对象*使用*命名索引*。
+在 JavaScript 中，`对象使用命名索引`。
 
-数组是特殊类型的对象，具有数字索引。
+`数组是特殊类型的对象，具有数字索引`。
 
 ## 何时使用数组，何时使用对象？
 
 - JavaScript 不支持关联数组
-- 如果希望元素名为*字符串（文本）*则应该使用*对象*。
-- 如果希望元素名为*数字*则应该使用*数组*。
+- `如果希望元素名为字符串（文本）则应该使用对象`。
+- `如果希望元素名为数字则应该使用数组`。
 
 ## 避免 new Array()
 
-没有必要使用 JavaScript 的内建数组构造器 new Array()。
+没有必要使用 JavaScript 的内建数组构造器 `new Array()`。
 
-*请使用 [] 取而代之！*
+*请使用 `[]` 取而代之！*
 
 下面两条不同的语句创建了名为 points 的新的空数组：
 
@@ -407,7 +407,7 @@ typeof fruits;             // 返回 object
 
 [亲自试一试](https://www.w3school.com.cn/tiy/t.asp?f=js_array_typeof)
 
-typeof 运算符返回 "object"，因为 JavaScript 数组属于对象。
+`typeof` 运算符返回 "`object`"，因为 `JavaScript 数组属于对象`。
 
 ### 解决方案 1：
 
