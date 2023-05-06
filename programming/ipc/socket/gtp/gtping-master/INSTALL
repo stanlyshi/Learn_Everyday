@@ -1,0 +1,50 @@
+gtping/INSTALL
+
+ GTP Ping
+
+   By Thomas Habets <thomas@habets.se>, Copy by Rongtao <rongtao@sylincom.com>
+
+
+Installing
+==========
+On debian systems I recommend creating a Debian package and installing
+that. See below.
+
+On other systems (or on debian if you like):
+
+./configure
+make
+make install
+
+
+Making a Debian package (optional)
+==================================
+./debian/rules binary
+
+
+Making a release (maintainer only)
+==================================
+* up version in configure.ac
+* debchange
+* make mrproper
+* autoreconf -i
+* git commit
+* make signed-dist
+* debuild
+
+System requirements
+===================
+I try to test it on at least these before doing a release:
+* Debian GNU/Linux amd64
+* Debian GNU/Linux x86
+* OpenBSD amd64
+* FreeBSD x86
+* IRIX 6.5 mips
+* Solaris 10 sparc
+* CentOS 7
+
+No special libraries are needed.
+
+
+-----------------------------------------------------------------------------
+Send questions/suggestions/patches/rants/money/routers to thomas@habets.se

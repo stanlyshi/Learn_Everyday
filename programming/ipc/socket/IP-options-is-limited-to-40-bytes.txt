@@ -1,0 +1,22 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:14 CST. 
+# IPv4 Options
+
+In Figure A.1(See 10.2), we show options following the 20-byte IPv4 header. As noted there, the 4-bit header length field limits the total size of the IPv4 header to 15 32-bit words (60 bytes), so the size of the IP options is limited to 40 bytes. Ten different options are defined for IPv4:
+
+1. NOP: no-operation—A one-byte option typically used for padding to make a later option fall on a four-byte boundary.
+2. EOL: end-of-list—A one-byte option that terminates option processing. Since the total size of the IP options must be a multiple of four bytes, EOL bytes follow the final option.
+3. LSRR: loose source and record route (Section 8.5 of TCPv1)—We will show an example of this shortly.
+4. SSRR: strict source and record route (Section 8.5 of TCPv1)—We will show an example of this shortly.
+5. Timestamp (Section 7.4 of TCPv1).
+6. Record route (Section 7.3 of TCPv1).
+7. Basic security (obsolete).
+8. Extended security (obsolete).
+9. Stream identifier (obsolete).
+10.Router alert—This option is described in RFC 2113 [Katz 1997]. This option is included in IP datagrams that should be examined by all routers that forward the datagram.
+
+# IP_OPTIONS
+The getsockopt and setsockopt functions (with a level of IPPROTO_IP and an optname of IP_OPTIONS)
+
+
+The getsockopt and setsockopt functions (with a level of IPPROTO_IP and an optname of IP_OPTIONS) fetch and set the IP options. The fourth argument to getsockopt and setsockopt is a pointer to a buffer (whose size is 44 bytes or less), and the fifth argument is the size of this buffer. The reason that the size of this buffer for getsockopt can be four bytes larger than the maximum size of the options is because of the way the source route option is handled, as we will describe shortly. Other than the two source route options, the format of what goes into the buffer is the format of the options when placed into the IP datagram.
+When the IP options are set using setsockopt, the specified options will then be sent on all IP datagrams on that socket. This works for TCP, UDP, and raw IP sockets. To clear these options, call setsockopt and specify either a null pointer as the fourth argument or a value of 0 as the fifth argument (the length).

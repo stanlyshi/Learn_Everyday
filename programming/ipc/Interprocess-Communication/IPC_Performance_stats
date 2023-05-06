@@ -1,0 +1,32 @@
+Starting client 1 which has 1 sync_or_async 1 num_requests 6789 priority
+Client using async 1: Time taken 14 seconds 43 milliseconds
+Starting client 0 which has 0 sync_or_async 1 num_requests 4567 priority
+Client using sync 0: Time taken 15 seconds 99 milliseconds
+Starting client 3 which has 1 sync_or_async 3 num_requests 4567 priority
+Client using async 3: Time taken 74 seconds 7 milliseconds
+Starting client 2 which has 0 sync_or_async 2 num_requests 1234 priority
+Client using sync 2: Time taken 75 seconds 0 milliseconds
+Starting client 1 which has 1 sync_or_async 1 num_requests 6789 priority
+Client using async 1: Time taken 7 seconds 10 milliseconds
+Starting client 1 which has 1 sync_or_async 1 num_requests 6789 priority
+Client using async 1: Time taken 4 seconds 20 milliseconds
+Starting client 1 which has 1 sync_or_async 1 num_requests 6789 priority
+Client using async 1: Time taken 1 seconds 60 milliseconds
+Starting client 0 which has 0 sync_or_async 1 num_requests 4567 priority
+Client using sync 0: Time taken 7 seconds 0 milliseconds
+Starting client 3 which has 1 sync_or_async 3 num_requests 4567 priority
+Client using async 3: Time taken 29 seconds 30 milliseconds
+Starting client 2 which has 0 sync_or_async 2 num_requests 1234 priority
+Client using sync 2: Time taken 28 seconds 20 milliseconds
+Starting client 3 which has 1 sync_or_async 3 num_requests 4567 priority
+Client using async 3: Time taken 65 seconds 10 milliseconds
+Starting client 0 which has 0 sync_or_async 1 num_requests 4567 priority
+Client using sync 0: Time taken 66 seconds 40 milliseconds
+Starting client 2 which has 0 sync_or_async 2 num_requests 1234 priority
+Client using sync 2: Time taken 63 seconds 30 milliseconds
+Starting client 0 which has 0 sync_or_async 1 num_requests 4567 priority
+Client using sync 0: Time taken 79 seconds 10 milliseconds
+Starting client 3 which has 1 sync_or_async 3 num_requests 4567 priority
+Client using async 3: Time taken 122 seconds 40 milliseconds
+Starting client 2 which has 0 sync_or_async 2 num_requests 1234 priority
+Client using sync 2: Time taken 122 seconds 80 milliseconds

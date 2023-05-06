@@ -1,0 +1,18 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:16 CST. 
+SIGIO with UDP Sockets
+
+Using signal-driven I/O with UDP is simple. The signal is generated whenever
+
+• A datagram arrives for the socket
+• An asynchronous error occurs on the socket
+
+Hence, when we catch SIGIO for a UDP socket, we call recvfrom to either read the datagram that arrived or to obtain the asynchronous error. We talked about asynchronous errors with regard to UDP sockets in Section 8.9(See 8.6.9). Recall that these are generated only if the UDP socket is connected.
+
+SIGIO is generated for these two conditions by the calls to sorwakeup on pp. 775, 779, and 784 of TCPv2.
+
+
+33 Signal(SIGHUP, sig_hup);
+34 Signal(SIGIO, sig_io);
+35 Fcntl(sockfd, F_SETOWN, getpid());
+36 Ioctl(sockfd, FIOASYNC, &on);
+37 Ioctl(sockfd, FIONBIO, &on);

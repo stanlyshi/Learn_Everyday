@@ -1,0 +1,97 @@
+manpage(gtping)(8)(8th May, 2009)(gtping)()
+
+manpagename(gtping)(sends GTP pings to a GSN)
+
+manpagesynopsis()
+    bf(gtping) [ bf(-46hfvV) ] [ bf(-c) em(count) ] [ bf(-i) em(time) ] [ bf(-p) em(port) ] [ -P em(port) ] [ bf(-Q <dscp>) ] [ bf(-s) <source iface or addr> ] [ bf(-t) em(teid) ] [ bf(-T) em(ttl) ] [ bf(-w) em(time) ] em(destination)
+
+manpagedescription()
+    bf(gtping) sends GTP Echo requests to GSNs (such as GGSN), and  requests
+    to the specified em(host) and displays the replies similarly to bf(ping)
+    on most systems (bf(ping -s) on Solaris).
+
+    By default one request is sent each second. This can be changed with
+    bf(-i).
+
+manpageoptions()
+startdit()
+
+    dit(-4) Force use of IPv4. Will normally auto-detect.
+    dit(-6) Force use of IPv6. Will normally auto-detect.
+    dit(-c em(count)) Stop after sending em(count) pings. Default is 0 which
+        means continue until user presses Ctrl-C.
+    dit(-f) Flood mode.  bf(-i) is still respected to "flood slowly".
+    dit(-g em(version)) Set GTP version.
+    dit(-h, --help) Show brief usage info and exit.
+    dit(-i em(time)) Time in seconds between sending pings. Default is 1.
+        Fractional seconds are supported, for example bf(-w) 0.1 will send one
+        ping every 100ms.
+    dit(-p em(port)) Destination UDP port to use. Default is 2123 (GTP-C).
+      GTP-U is port 2152, GTP' is port 3386.
+    dit(-P em(port)) Source port to use. Default is to use dynamically
+      assigned port.
+    dit(-Q em(dscp)) Set IP ToS-field. Can use symbolic names or numbers.
+      Symbolic names are: BE,EF,AF[1-4][1-3],CS[0-7] for DSCP values
+      (recommended), lowdelay, throughput, lowcost and mincost for IP
+      precedence, netcontrol, internetcontrol, critic_ecp,
+      flashoverride, flash, immediate, priority and routine for
+      precedence or numeric.  Use 0x-prefix for hex values and
+      0-prefix for octal (E.g. 0110 for AF21). Some DSCP values such
+      as EF require root privileges on some systems. You will get a
+      message on stderr if gtping fails to set the value.
+    dit(-s em(iface or addr)) Source address to use. If given interface name,
+      will pick an address from that interface. Interface names don't work
+      on all OSs. Known to work on Linux and OpenBSD.
+    dit(-t em(teid)) Transaction ID to use. Default is not present or 0.
+    dit(-T em(ttl)) TTL of IP packet. Default is to use system default.
+    dit(-V, --version) Show version and exit.
+    dit(-w em(time)) Don't exit before waiting for the last ping for this long.
+    Default -w is auto-detect, use 2*average RTT, and while no replies have
+    been seen, wait for 10 seconds.
+
+enddit()
+
+manpagesection(Example)
+mancommand(.nf)
+mancommand(.sp)
+    $ ./gtping -c 3 1.2.3.4
+    GTPing 0.14
+    GTPING 1.2.3.4 (1.2.3.4) 12 bytes of data.
+    12 bytes from 1.2.3.4: seq=0 ttl=64 ToS=be time=353.40 ms
+    12 bytes from 1.2.3.4: seq=1 ttl=64 ToS=be time=606.16 ms
+    12 bytes from 1.2.3.4: seq=2 ttl=64 ToS=be time=63.55 ms
+
+    --- brick GTP ping statistics ---
+    3 packets transmitted, 3 received, 0% packet loss, time 3000ms
+    0 out of order, 0 dups, 0 connection refused, 0 ICMP error
+    rtt min/avg/max/mdev = 63.551/341.039/606.161/221.692 ms
+
+    $ ./gtping -r1 4.2.2.1
+    GTPing 0.14
+    GTPING traceroute to 4.2.2.1 (4.2.2.1) 12 bytes of data.
+       1 From x.x.x.x ToS=cs6 ttl=64 time=1.97 ms: TTL exceeded
+       2 From x.x.x.x ToS=cs6 ttl=63 time=2.68 ms: TTL exceeded
+       3 From x.x.x.x ToS=cs6 ttl=126 time=20.25 ms: TTL exceeded
+       4 From 195.84.210.29 ToS=cs6 ttl=252 time=23.11 ms: TTL exceeded
+       5 From 4.68.111.17 ToS=cs6 ttl=248 time=45.18 ms: TTL exceeded
+       6 From 4.69.134.25 ToS=cs6 ttl=248 time=35.63 ms: TTL exceeded
+       7 From 4.69.134.30 ToS=be ttl=57 time=45.78 ms: TTL exceeded
+       8 From 4.69.141.150 ToS=be ttl=58 time=46.75 ms: TTL exceeded
+       9 From 4.69.133.89 ToS=be ttl=59 time=51.69 ms: TTL exceeded
+      10 From 4.69.141.170 ToS=be ttl=59 time=41.87 ms: TTL exceeded
+      11 From 4.69.132.133 ToS=be ttl=59 time=57.38 ms: TTL exceeded
+      12 From 4.69.139.98 ToS=cs6 ttl=246 time=57.91 ms: TTL exceeded
+      13 From 4.2.2.1 ToS=be ttl=246 time=57.89 ms: Port closed
+mancommand(.fi)
+mancommand(.in)
+
+manpagebugs()
+    No known bugs.
+
+manpageseealso()
+
+    bf(ping(8)), bf(arping(8))
+
+manpageauthor()
+    GTPing was written by Thomas Habets <thomas@habets.se>.
+

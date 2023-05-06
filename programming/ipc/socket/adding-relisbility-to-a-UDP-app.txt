@@ -1,0 +1,6 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:13 CST. 
+
+If we are going to use UDP for a request-reply application, as mentioned in the previous section, then we must add two features to our client:
+
+1. Timeout and retransmission to handle datagrams that are discarded
+2. Sequence numbers so the client can verify that a reply is for the appropriate request

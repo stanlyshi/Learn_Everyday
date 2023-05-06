@@ -1,0 +1,56 @@
+Readme for the 6th semester Networks lab assignment on Raw sockets
+
+
+------------------------------Contents-----------------------------
+1. Assignment Statement
+2. Compiling the program
+3. Funcitons of the program
+4. structure of the source 
+-------------------------------------------------------------------
+
+-------------------------- Assignment-------------------------------
+1. Write a program using Raw Socket (Packet Socket) of Linux  e  nvironment that reads the packets at the 2nd Layer (of the OSI model) and reports whenever a new Ethernet station is identified in the network.
+Please read the online manual entries for the following.
+            Socket (2)
+            Socket (7)
+            Packet(7)
+            and related ones (see also ports).
+
+2.Site to filter the receive packets in data link layer
+
+http://manpages.ubuntu.com/manpages/hardy/man7/packet.7.html
+
+Details for the same:
+
+Valid types are PACKET_HOST for a packet addressed to the local host, PACKET_BROADCAST for a physical layer broadcast packet, PACKET_MULTICAST for a packet sent to a physical layer multicast address, PACKET_OTHERHOST for a packet to some other host that has been caught by a device driver in promiscuous mode, and PACKET_OUTGOING for a packet originated from the local host that is looped back to a packet socket. These types make only sense for receiving.
+
+{
+// these constant values are taken from linux/if_packet.h
+case 0://PACKET_HOST
+             printf("For_Me\n");
+             break;
+case 1://PACKET_BROADCAST
+             printf("Broadcast\n");
+             break;
+case 2://PACKET_MULTICAST
+             printf("Multicast\n");
+             break;
+case 3://PACKET_OTHERHOST
+          printf("Other_Host\n");
+          break;
+case 4://PACKET_OUTGOING
+          printf("Outgoing\n");
+          break;
+case 5://PACKET_LOOPBACK
+          printf("Loop_Back\n");
+          break;
+case 6://PACKET_FASTROUTE
+          printf("Fast_Route\n");
+          break;
+}
+--------------------------------------------------------------------
+
+
+
+
+

@@ -1,0 +1,56 @@
+Memleak finder
+Mathieu Desnoyers, May 2013
+
+* memleak-finder.so
+
+example usage:
+LD_PRELOAD=<path_to>/memleak-finder.so appname
+
+If you get e.g.:
+
+[warning] trying to free unallocated ptr 0x18b2a70 caller 0x7fae7943dd57
+or
+[leak] ptr: 0x18b2350 size: 0x160 caller: 0x7fae7943e28f <symbol>
+
+If you need to see local symbols as well ("static" function), you will
+need to use gdb "disassemble 0x...". A trick to hook gdb on the program
+after the leak printout is to add an assert(0) at the end of the library
+destructor, and run the program after issuing ulimit -c unlimited to
+gather a core dump of the application. Don't forget to compile your
+program and libraries, and install the "-dbg" versions of the system
+libraries if you want the make sure gdb can lookup their local symbols.
+
+You can set the MEMLEAK_FINDER_PRINT environment variable to make the
+shared object print every allocation/free on stderr.
+
+
+* malloc-stats.so
+
+LD_PRELOAD=<path_to>/malloc-stats.so appname
+
+Then, kill with:
+
+killall -SIGUSR2 appname
+
+It will show the output of malloc_stats(3) on stderr of the application.
+
+Example output:
+
+Arena 0:
+system bytes     =     135168
+in use bytes     =      19360
+Total (incl. mmap):
+system bytes     =     135168
+in use bytes     =      19360
+max mmap regions =          0
+max mmap bytes   =          0
+
+
+* Credits
+
+The design of this library is inspired by this presentation:
+
+"Tips of malloc & free"
+Tetsuyuki Kobayashi
+2013.2.22 Embedded Linux Conference
+http://events.linuxfoundation.org/images/stories/slides/elc2013_kobayashi_malloc.pdf

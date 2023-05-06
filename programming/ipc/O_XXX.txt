@@ -1,0 +1,16 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:10 CST. 
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 03月 20日 星期三 08:23:56 CST. 
+
+
+
+Description		mq_open		sem_open		shm_open
+-----------------------------------------------------
+read-only		O_RDONLY					O_RDONLY
+write-only		O_WRONLY					
+read-write		O_RDWR						O_RDWR
+-----------------------------------------------------
+not exist		O_CREAT		O_CREAT			O_CREAT
+exclusive		O_EXCL		O_EXCL			O_EXCL	(专用的)
+-----------------------------------------------------
+nonblock mode	O_NONBLOCK			
+truncate									O_TRUNC	(截断)

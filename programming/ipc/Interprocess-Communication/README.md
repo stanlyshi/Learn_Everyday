@@ -1,0 +1,2 @@
+# Interprocess-Communication
+In this project a service domain which is created that can be accessed from any process on the system. A library of calls to access this service was created and quality of service mechanisms was implemented. The service implemented performs important calculations for encryption, which is used for security purposes.This service supports both synchronous and asynchronous calls. Asynchronous calls are implemented using a data structure analogous to the Xen I/O rings. Shared Memory as well as message queues were used in this project.

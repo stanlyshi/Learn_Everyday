@@ -1,0 +1,8 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:14 CST. 
+# IP_OPTIONS
+
+The getsockopt and setsockopt functions (with a level of IPPROTO_IP and an optname of IP_OPTIONS) fetch and set the IP options. The fourth argument to getsockopt and setsockopt is a pointer to a buffer (whose size is 44 bytes or less), and the fifth argument is the size of this buffer. The reason that the size of this buffer for getsockopt can be four bytes larger than the maximum size of the options is because of the way the source route option is handled, as we will describe shortly. Other than the two source route options, the format of what goes into the buffer is the format of the options when placed into the IP datagram.
+When the IP options are set using setsockopt, the specified options will then be sent on all IP datagrams on that socket. This works for TCP, UDP, and raw IP sockets. To clear these options, call setsockopt and specify either a null pointer as the fourth argument or a value of 0 as the fifth argument (the length).
+Setting the IP options for a raw IP socket does not work on all implementations if the IP_HDRINCL socket option (which we will describe in the next chapter) is also set. Many Berkeley-derived implementations do not send the options set with IP_OPTIONS when IP_HDRINCL is enabled, because the application can set its own IP options in the IP header it builds (pp. 1056–1057 of TCPv2). Other systems (e.g., FreeBSD) allow the application to specify IP options using either the IP_OPTIONS socket option or by setting IP_HDRINCL and including them in the IP header that it builds, but not both.
+
+

@@ -1,0 +1,12 @@
+== SCTP demo
+
+sctps.c		Server
+sctpc.c		Client
+common.h	Common vars
+Makefile	Makefile (rly? :P)
+
+*** libsctp-dev required ***
+
+For more info about SCTP:
+http://en.wikipedia.org/wiki/Stream_Control_Transmission_Protocol
+

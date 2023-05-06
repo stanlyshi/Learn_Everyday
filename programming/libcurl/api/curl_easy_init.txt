@@ -1,0 +1,8 @@
+Handle the Easy libcurl
+To use the easy interface, you must first create yourself an easy handle. You need one handle for each easy session you want to perform. Basically, you should use one handle for every thread you plan to use for transferring. You must never share the same handle in multiple threads.
+
+Get an easy handle with
+
+ easyhandle = curl_easy_init();
+
+ It returns an easy handle. Using that you proceed to the next step: setting up your preferred actions. A handle is just a logic entity for the upcoming transfer or series of transfers.

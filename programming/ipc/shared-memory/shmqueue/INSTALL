@@ -1,0 +1,22 @@
+Copyright(C) Sylincom 荣涛
+
+1.编译
+	$ make 
+
+2.加载
+	$ sudo insmod hellomodule
+
+3.创建节点
+	3.1 查看创建的驱动
+		$ grep Hello /proc/devices
+	3.2 创建节点
+		$ sudo mknod /dev/hellodev c 231 0
+
+4.使用节点
+	见test.c
+
+5.卸载驱动
+	$ sudo rmmod hellomodule
+
+6.删除节点文件
+	$ sudo rm /dev/hellodev

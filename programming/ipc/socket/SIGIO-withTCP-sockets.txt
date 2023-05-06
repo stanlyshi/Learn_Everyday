@@ -1,0 +1,25 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:16 CST. 
+SIGIO with TCP Sockets
+
+Unfortunately, signal-driven I/O is next to useless with a TCP socket. The problem is that the signal is generated too often, and the occurrence of the signal does not tell us what happened. As noted on p. 439 of TCPv2, the following conditions all cause SIGIO to be generated for a TCP socket (assuming signal-driven I/O is enabled):
+
+	• A connection request has completed on a listening socket
+	• A disconnect request has been initiated
+	• A disconnect request has completed
+	• Half of a connection has been shut down
+	• Data has arrived on a socket
+	• Data has been sent from a socket (i.e., the output buffer has free space)
+	• An asynchronous error occurred
+	
+	For example, if one is both reading from and writing to a TCP socket, SIGIO is generated when new data arrives and when data previously written is acknowledged,and there is no way to distinguish between the two in the signal handler. If SIGIO is used in this scenario, the TCP socket should be set to nonblocking to prevent a read or write from blocking. We should consider using SIGIO only with a listening TCP socket, because the only condition that generates SIGIO for a listening socket is the completion of a new connection.
+	
+	The only real-world use of signal-driven I/O with sockets that the authors were able to find is the NTP server, which uses UDP. The main loop of the server receives a datagram from a client and sends a response. But, there is a non-negligible amount of processing to do for each client's request (more than our trivial echo server). It is important for the server to record accurate timestamps for each received datagram, since that value is returned to the client and then used by the client to calculate the RTT to the server. Figure 25.1 shows two ways to build such a UDP server.
+
+
+33 Signal(SIGHUP, sig_hup);
+34 Signal(SIGIO, sig_io);
+35 Fcntl(sockfd, F_SETOWN, getpid());
+36 Ioctl(sockfd, FIOASYNC, &on);
+37 Ioctl(sockfd, FIONBIO, &on);
+
+

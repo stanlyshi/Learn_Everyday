@@ -1,0 +1,27 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:23 CST. 
+
+############## UDP
+• As we show in Figure 20.1(See 9.9.1), UDP supports broadcasting and multicasting. Indeed, UDP must be used if the application uses broadcasting or multicasting. We discussed these two addressing modes in Chapters 20(See 9.9) and 21(See 9.10).
+
+• UDP has no connection setup or teardown. With regard to Figure 2.5(See 7.2.6), UDP requires only two packets to exchange a request and a reply (assuming the size of each is less than the minimum MTU between the two end-systems). TCP requires about 10 packets, assuming that a new TCP connection is established for each request-reply exchange.
+
+Also important in this number-of-packet analysis is the number of packet round trips required to obtain the reply. This becomes important if the latency exceeds the bandwidth, as described in Appendix A of TCPv3. That text shows that the minimum transaction time for a UDP request-reply is RTT + server processing time (SPT). With TCP, however, if a new TCP connection is used for the request-reply, the minimum transaction time is 2 x RTT + SPT, one RTT greater than the UDP time.
+
+
+############### TCP
+We now list the features of TCP that are not provided by UDP, which means that an application must provide these features itself, if they are necessary to the application. We use the qualifier "necessary" because not all features are needed by all applications. For example, dropped segments might not need to be retransmitted for a real-time audio application, if the receiver can interpolate the missing data. Also, for simple request-reply transactions, windowed flow control might not be needed if the two ends agree ahead of time on the size of the largest request and reply.
+
+• Positive acknowledgments, retransmission of lost packets, duplicate detection, and sequencing of packets reordered by the network—TCP acknowledges all data, allowing lost packets to be detected. The implementation of these two features requires that every TCP data segment contain a sequence number that can then be acknowledged. It also requires that TCP estimate a retransmission timeout value for the connection and that this value be updated continually as network traffic between the two end-systems changes.
+
+• Windowed flow control—A receiving TCP tells the sender how much buffer space it has allocated for receiving data, and the sender cannot exceed this. That is, the amount of unacknowledged data at the sender can never exceed the receiver's advertised window.
+
+• Slow start and congestion avoidance—This is a form of flow control imposed by the sender to determine the current network capacity and to handle periods of congestion. All current TCPs must support these two features and we know from experience (before these algorithms were implemented in the late 1980s) that protocols that do not "back off" in the face of congestion just make the congestion worse (e.g., [Jacobson 1988]).
+
+######### In summary,
+
+• UDP must be used for broadcast or multicast applications. Any form of desired error control must be added to the clients and servers, but applications often use broadcasting or multicasting when some (assumed small) amount of error is acceptable (such as lost packets for audio or video). Multicast applications requiring reliable delivery have been built (e.g., multicast file transfer), but we must decide whether the performance gain in using multicasting (sending one packet to N destinations versus sending N copies of the packet across N TCP connections) outweighs the added complexity required within the application to provide reliable communications.
+
+• UDP can be used for simple request-reply applications, but error detection must then be built into the application. Minimally, this involves acknowledgments, timeouts, and retransmission. Flow control is often not an issue for reasonably sized requests and responses. We will provide an example of these features in a UDP application in Section 22.5(See 9.11.5). The factors to consider here are how often the client and server communicate (Could a TCP connection be left up between the two?) and how much data is exchanged (if multiple packets are normally required, then the cost of the TCP connection's establishment and teardown becomes less of a factor).
+
+• UDP should not be used for bulk data transfer (e.g., file transfer). The reason is that windowed flow control, congestion avoidance, and slow-start must all be built into the application, along with the features from the previous bullet point, which means we are reinventing TCP within the application. We should let the vendors focus on better TCP performance and concentrate our efforts on the application itself.
+

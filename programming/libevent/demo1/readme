@@ -1,0 +1,1 @@
+代码实现了一个简单的echo server，server启动后，client端启动并连接，在cmd中输入文字，server端收到后，将文字再返回给client。

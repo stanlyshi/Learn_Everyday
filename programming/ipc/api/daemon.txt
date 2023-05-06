@@ -1,0 +1,13 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:04 CST. 
+
+## 守护进程daemon    P286
+
+守护进程是在后台运行且不与任何控制台终端关联的进程。
+Unix系统通常有很多守护进程在后台运行（约20-50个）。
+
+1.syslogd守护进程
+2.syslog函数
+	#include <syslog.h>
+	void syslog(int priority, const char *message, ...);
+
+3.inetd守护进程	P293

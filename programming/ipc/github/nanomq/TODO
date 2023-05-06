@@ -1,0 +1,14 @@
+* Fair receiving when receiving from all nodes
+* Monitoring tool
+  * Monitor message throughput
+  * Ping nodes to check if they are running
+* Unit tests
+* Maybe allow zero length messages
+* Magic and version of mmap() file
+* Support context using mkstemp() for in process communication and testing
+
+
+-----------------------------------------------------
+2021年1月22日	完成 C++到C的移植 nmq.hpp -> nmq.h
+2021年1月22日	完成 nmq.h -> nmq2.h 的重写，消除 operations 回调函数的指令 还是不如原始 C++的时延低，继续看看
+

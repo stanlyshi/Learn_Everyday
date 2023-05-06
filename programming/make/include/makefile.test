@@ -1,0 +1,72 @@
+
+CC         = gcc
+RM         = rm -rf
+OBJS_DIR   = target/objects
+DEPS_DIR   = target/deps
+TRAGET_DIR = target
+TRAGET     = $(TRAGET_DIR)/jt_sran
+SRC_ROOT   = $(shell pwd)/../..
+
+
+
+SRC_DIRS  = $(SRC_ROOT)/common_lib/src
+SRC_DIRS += $(SRC_ROOT)/product_om/bord_mgmt/src
+SRC_DIRS += $(SRC_ROOT)/product_om/cell_mgmt/src
+
+
+INCLUDE_DIRS  += -I$(SRC_ROOT)/common_lib/include
+INCLUDE_DIRS  += -I$(SRC_ROOT)/product_om/bord_mgmt/H
+INCLUDE_DIRS  += -I$(SRC_ROOT)/product_om/cell_mgmt/include 
+
+
+
+SOURCES  = $(SRC_ROOT)/common_lib/src/rbtree.c 
+SOURCES += $(SRC_ROOT)/common_lib/src/sbs_file.c 
+SOURCES += $(SRC_ROOT)/common_lib/src/sbs_list.c 
+SOURCES += $(SRC_ROOT)/common_lib/src/sbs_log.c 
+
+
+
+
+LIBS := -lnetsnmp 
+LIBS += -lnetsnmpmibs 
+LIBS += -lnetsnmpagent 
+LIBS += -lpthread 
+LIBS += -lxml2 
+LIBS += -ldl 
+LIBS += -lrt 
+
+
+vpath %.c $(SRC_DIRS)
+
+OBJS    = $(addprefix $(OBJS_DIR)/,$(patsubst %.c,%.o, $(notdir $(SOURCES))))
+DEPS    = $(addprefix $(DEPS_DIR)/,$(patsubst %.c,%.d, $(notdir $(SOURCES))))
+
+
+CFLAGS = $(INCLUDE_DIRS) $(LIBS) -O0 -g3 -Wall 
+
+
+$(TRAGET): $(OBJS) 
+	$(CC) $(CFLAGS) -o $(TRAGET) $(OBJS) 
+	
+all: $(OBJS) 
+	$(CC) $(CFLAGS) -o $(TRAGET) $(OBJS) 
+
+
+$(OBJS_DIR)/%.o:%.c
+	@if [ ! -d $(OBJS_DIR) ];then mkdir -p $(OBJS_DIR);fi;
+	$(CC) -c $< -o $@  $(CFLAGS)
+
+$(DEPS_DIR)/%.d:%.c
+	@if [ ! -d $(DEPS_DIR) ];then mkdir -p $(DEPS_DIR);fi;\
+	set -e;$(RM) $@; 
+	$(CC) -MM $(CFLAGS) $< > $@.dep; 
+	@sed 's,\($*\)\.o[ :]*,$(OBJS_DIR)/\1.o $@ :,g' < $@.dep > $@; \
+	$(RM) $@.dep 
+
+-include $(DEPS)
+
+.PHONY:clean
+clean:
+	$(RM) $(TRAGET_DIR)
+

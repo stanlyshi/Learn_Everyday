@@ -1,0 +1,4 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:19 CST. 
+Two different ways to build a UDP server.
+
+Most UDP servers (including our echo server from Chapter 8(See 8.6)) are designed as shown at the left of this figure. But the NTP server uses the technique shown on the right side: When a new datagram arrives, it is read by the SIGIO handler, which also records the time at which the datagram arrived. The datagram is then placed on another queue within the process from which it will be removed by and processed by the main server loop. Although this complicates the server code, it provides accurate timestamps of arriving datagrams.

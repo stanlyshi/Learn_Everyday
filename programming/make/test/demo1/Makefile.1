@@ -1,0 +1,8 @@
+LIB=-lm
+CC=g++ ${LIB}
+CFILES:=a.c b.c
+
+all:$(patsubst %.c,%,$(CFILES))
+
+clean:
+	rm a b

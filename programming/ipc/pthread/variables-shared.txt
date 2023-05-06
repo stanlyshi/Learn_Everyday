@@ -1,0 +1,17 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:10 CST. 
+
+More than just the global variables are shared. All threads within a process share the following:
+• Process instructions
+• Most data
+• Open files (e.g., descriptors)
+• Signal handlers and signal dispositions
+• Current working directory
+• User and group IDs
+
+But each thread has its own
+• Thread ID
+• Set of registers, including program counter and stack pointer
+• Stack (for local variables and return addresses)
+• errno
+• Signal mask
+• Priority

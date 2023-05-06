@@ -1,0 +1,7 @@
+libbacktrace 一直不通过，我改了一下代码
+
+#ifdef HAVE_BACKTRACE
+	/* 原始代码 */
+#else
+	/* 我的代码 */
+#endif

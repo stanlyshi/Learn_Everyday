@@ -1,0 +1,22 @@
+Global Preparation
+The program must initialize some of the libcurl functionality globally. That means it should be done exactly once, no matter how many times you intend to use the library. Once for your program's entire life time. This is done using
+
+ curl_global_init()
+
+	and it takes one parameter which is a bit pattern that tells libcurl what to initialize. Using CURL_GLOBAL_ALL will make it initialize all known internal sub modules, and might be a good default option. The current two bits that are specified are:
+
+	CURL_GLOBAL_WIN32
+
+	which only does anything on Windows machines. When used on a Windows machine, it'll make libcurl initialize the win32 socket stuff. Without having that initialized properly, your program cannot use sockets properly. You should only do this once for each application, so if your program already does this or of another library in use does it, you should not tell libcurl to do this as well.
+
+	CURL_GLOBAL_SSL
+
+	which only does anything on libcurls compiled and built SSL-enabled. On these systems, this will make libcurl initialize the SSL library properly for this application. This only needs to be done once for each application so if your program or another library already does this, this bit should not be needed.
+
+	libcurl has a default protection mechanism that detects if curl_global_init hasn't been called by the time curl_easy_perform is called and if that is the case, libcurl runs the function itself with a guessed bit pattern. Please note that depending solely on this is not considered nice nor very good.
+
+	libcurl has a default protection mechanism that detects if curl_global_init hasn't been called by the time curl_easy_perform is called and if that is the case, libcurl runs the function itself with a guessed bit pattern. Please note that depending solely on this is not considered nice nor very good.
+
+	When the program no longer uses libcurl, it should call curl_global_cleanup, which is the opposite of the init call. It will then do the reversed operations to cleanup the resources the curl_global_init call initialized.
+
+	Repeated calls to curl_global_init and curl_global_cleanup should be avoided. They should only be called once each.

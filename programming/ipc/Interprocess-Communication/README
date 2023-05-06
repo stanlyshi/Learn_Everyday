@@ -1,0 +1,6 @@
+0. remove IPC_Performance_stats from folder if it exists.
+1. run ./kill_ipcs.sh
+2. run make
+3. run ./server_main
+4. open another  terminal and run ./client_main
+5. results can be viewed in IPC_Performance_stats file.

@@ -1,0 +1,12 @@
+使用BufferEvent
+在上面的代码中，client的cmd中有信息输入时，client直接将数据写入到fd中，server中收到信息后，也是直接将信息写入到fd中，因为fd是非阻塞的，所以不能保证正确。那么需要一个自己管理的缓存来管理自己的数据。那么步骤将稍微有些变化，如下所示：
+
+设置scokfd为nonblocking；
+使用bufferevent_socket_new创建一个struct bufferevent* bev，关联上面的sockfd，并托管给event_base;
+使用bufferevent_setcb(bev, read_cb, write_cb, error_cb, (void*)arg)；
+使用buffevent_enable(bev, EV_READ|EV_WRITE|EV_PERSIST)来启动read/write事件
+
+作者：shareLin
+链接：https://www.jianshu.com/p/8ea60a8d3abb
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

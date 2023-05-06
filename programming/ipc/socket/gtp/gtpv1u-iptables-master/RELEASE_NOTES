@@ -1,0 +1,13 @@
+
+Resolved issues in GTPU v1.1
+-------------------------
+
+1. Error related to lower versions of iptables, e.g. v1.3.5
+2. Error in file copy command in cmd.sh
+
+Known issues in GTPU v1.0
+-------------------------
+
+1. Does not implement the "Transport" action.
+2. Does not handle segmented GTPu packets.
+

@@ -1,0 +1,15 @@
+protocol://user:password@example.com/path/ 
+	curl_easy_setopt(easyhandle, CURLOPT_KEYPASSWD, "keypassword");
+	curl_easy_setopt(easyhandle, CURLOPT_NETRC, 1L);
+	curl_easy_setopt(easyhandle, CURLOPT_USERPWD, "myname:thesecret");
+
+
+HTTP Authentication
+	curl_easy_setopt(easyhandle, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
+	curl_easy_setopt(easyhandle, CURLOPT_PROXYAUTH, CURLAUTH_NTLM);
+
+HTTP POSTing
+    char *data="name=daniel&project=curl";
+    curl_easy_setopt(easyhandle, CURLOPT_POSTFIELDS, data);
+    curl_easy_setopt(easyhandle, CURLOPT_URL, "http://posthere.com/");			 
+    curl_easy_perform(easyhandle); /* post away! */

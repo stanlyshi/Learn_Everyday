@@ -1,0 +1,10 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:15 CST. 
+Raw sockets provide three features not provided by normal TCP and UDP sockets:
+
+• Raw sockets let us read and write ICMPv4, IGMPv4, and ICMPv6 packets. The ping program, for example, sends ICMP echo requests and receives ICMP echo replies. (We will develop our own version of the ping program in Section 28.5(See 9.17.5).) The multicast routing daemon, mrouted, sends and receives IGMPv4 packets.
+This capability also allows applications that are built using ICMP or IGMP to be handled entirely as user processes, instead of putting more code into the kernel. The router discovery daemon (in. rdisc under Solaris 2.x; Appendix F of TCPv1 describes how to obtain the source code for a publicly available version), for example, is built this way. It processes two ICMP messages (router advertisement and router solicitation) that the kernel knows nothing about.
+• With a raw socket, a process can read and write IPv4 datagrams with an IPV4 protocol field that is not processed by the kernel. Recall the 8-bit IPv4 protocol field in Figure A.1(See 10.2). Most kernels only process datagrams containing values of 1 (ICMP), 2 (IGMP), 6 (TCP), and 17 (UDP). But many other values are defined for the protocol field: The IANA's "Protocol Numbers" registry lists all the values. For example, the OSPF routing protocol does not use TCP or UDP, but it uses IP directly, setting the protocol field of the IP datagram to 89. The gated program that implements OSPF must use a raw socket to read and write these IP datagrams since they contain a protocol field the kernel knows nothing about. This capability carries over to IPv6 also.
+• With a raw socket, a process can build its own IPv4 header using the IP_HDRINCL socket option. This can be used, for example, to build UDP and TCP packets, and we will show an example of this in Section 29.7(See 9.18.7).
+
+This chapter describes raw socket creation, input, and output. We will also develop versions of the ping and traceroute programs that work with both IPv4 and IPv6.
+

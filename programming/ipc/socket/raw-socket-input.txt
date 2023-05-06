@@ -1,0 +1,16 @@
+# Copyright (C) Rong Tao @Sylincom Beijing, 2019年 06月 14日 星期五 09:06:15 CST. 
+The first question that we must answer regarding raw socket input is: Which received IP datagrams does the kernel pass to raw sockets? The following rules apply:
+
+• Received UDP packets and received TCP packets are never passed to a raw socket. If a process wants to read IP datagrams containing UDP or TCP packets,the packets must be read at the datalink layer, as described in Chapter 29(See 9.18).
+• Most ICMP packets are passed to a raw socket after the kernel has finished processing the ICMP message. Berkeley-derived implementations pass all received ICMP packets to a raw socket other than echo request, timestamp request, and address mask request (pp. 302–303 of TCPv2). These three ICMP messages are processed entirely by the kernel.
+• All IGMP packets are passed to a raw socket after the kernel has finished processing the IGMP message.
+• All IP datagrams with a protocol field that the kernel does not understand are passed to a raw socket. The only kernel processing done on these packets is the minimal verification of some IP header fields: the IP version, IPv4 header checksum, header length, and destination IP address (pp. 213–220 of TCPv2).
+• If the datagram arrives in fragments, nothing is passed to a raw socket until all fragments have arrived and have been reassembled.
+
+When the kernel has an IP datagram to pass to the raw sockets, all raw sockets for all processes are examined, looking for all matching sockets. A copy of the IP datagram is delivered to each matching socket. The following tests are performed for each raw socket and only if all three tests are true is the datagram delivered to the socket:
+
+• If a nonzero protocol is specified when the raw socket is created (the third argument to socket), then the received datagram's protocol field must match this value or the datagram is not delivered to this socket.
+• If a local IP address is bound to the raw socket by bind, then the destination IP address of the received datagram must match this bound address or the datagram is not delivered to this socket.
+• If a foreign IP address was specified for the raw socket by connect, then the source IP address of the received datagram must match this connected address or the datagram is not delivered to this socket.
+
+

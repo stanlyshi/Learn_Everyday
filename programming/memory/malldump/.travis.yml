@@ -1,0 +1,13 @@
+os:
+  - linux
+
+compiler: gcc
+language: c
+sudo: require
+dist: trusty
+
+install:
+  - sudo apt-get install -y libc6-dbg
+
+script:
+  - bash ./tools/build.sh

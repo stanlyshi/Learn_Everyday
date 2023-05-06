@@ -1,0 +1,3 @@
+/work/workspace/test/ipc/socket/gtp/gtpv1u-iptables-master/Bin/xt_GTPU/libxt_GTPU.o: \
+ libxt_GTPU.c xt_GTPU.h
+ libxt_GTPU.c xt_GTPU.h :

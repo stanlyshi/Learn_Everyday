@@ -1,0 +1,6 @@
+https://github.com/emboss/siphash-c
+
+== siphash-c
+
+A streaming C implementation of SipHash[http://131002.net/siphash/siphash.pdf].
+Contains an optimized one-pass implementation as well.
