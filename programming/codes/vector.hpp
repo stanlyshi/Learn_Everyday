@@ -102,9 +102,9 @@ namespace alg
     private:
         //std::unique_ptr<T[]> arr;
         T* arr;
-        size_t m_capacity_reserve = 4;
-        size_t m_capacity = 4;
-        size_t m_size  = 0;
+        size_t m_capacity_reserve   = 4;
+        size_t m_capacity           = 4;
+        size_t m_size               = 0;
 
         inline void reallocate();
     };
