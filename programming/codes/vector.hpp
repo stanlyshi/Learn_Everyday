@@ -25,7 +25,7 @@ namespace alg
         vector() noexcept;
         explicit vector(size_t n);
         vector(const size_t n, const T& value);
-        vector(iterator first, iterator last);
+        template <class InputIt> vector(InputIt first, InputIt last);
         vector(std::initializer_list<T> ilist);
         vector(const vector<T>& other);
         vector(vector<T>&&) noexcept;
@@ -36,7 +36,7 @@ namespace alg
         vector<T>& operator = (vector<T>&& other) noexcept;
         vector<T>& operator = (std::initializer_list<T> ilist);
         void assign(const size_t count, const T& value);
-        void assign(iterator first, iterator last);
+        template <class InputIt> void assign(InputIt first, InputIt last);
         void assign(std::initializer_list<T> ilist);
 
         /*modifiers*/
@@ -141,7 +141,8 @@ namespace alg
     }
 
     template<typename T>
-    vector<T>::vector(iterator first, iterator last)
+    template <class InputIt>
+    vector<T>::vector(InputIt first, InputIt last)
         : m_size(last - first), m_capacity(m_size << 2)
     {
         arr = new T[m_capacity];
@@ -247,7 +248,8 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::assign(iterator first, iterator last)
+    template <class InputIt>
+    inline void vector<T>::assign(InputIt first, InputIt last)
     {
         size_t newSize = last - first;
         if (newSize > m_capacity) {
