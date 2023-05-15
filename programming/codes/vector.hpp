@@ -317,8 +317,7 @@ namespace alg
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         if (ipos > arr + m_size) {
-            printf("Vector emplace iterator outside range!\n");
-            return ipos;
+            throw std::out_of_range("Vector emplace iterator outside range!\n");
         }
         if (m_size == m_capacity) {
             m_capacity <<= 2;
@@ -349,8 +348,7 @@ namespace alg
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         if (ipos > arr + m_size || !count) {
-            printf("Vector insert iterator outside range, or nothing to be inserted!\n");
-            return ipos;
+            throw std::out_of_range("Vector insert iterator outside range, or nothing to be inserted!\n");
         }
         if (m_size + count > m_capacity) {
             m_capacity = (m_size + count) << 2;
@@ -372,8 +370,7 @@ namespace alg
         iterator ipos = &arr[offset_pos];
         size_t count = last - first;
         if (ipos > arr + m_size || !count) {
-            printf("Vector insert iterator outside range, or nothing to be inserted!\n");
-            return ipos;
+            throw std::out_of_range("Vector insert iterator outside range, or nothing to be inserted!\n");
         }
         if (m_size + count > m_capacity) {
             m_capacity = (m_size + count) << 2;
@@ -394,8 +391,7 @@ namespace alg
         iterator ipos = &arr[offset_pos];
         size_t count = ilist.size();
         if (ipos > arr + m_size || !count) {
-            printf("Vector insert iterator outside range, or nothing to be inserted!\n");
-            return ipos;
+            throw std::out_of_range("Vector insert iterator outside range, or nothing to be inserted!\n");
         }
         if (m_size + count > m_capacity) {
             m_capacity = (m_size + count) << 2;
@@ -416,8 +412,7 @@ namespace alg
     {
         iterator ipos = &arr[pos - arr];
         if (ipos > arr + m_size) {
-            printf("Vector erase iterator outside range!\n");
-            return ipos;
+            throw std::out_of_range("Vector erase iterator outside range!\n");
         }
         memmove(ipos, ipos + 1, (m_size - (ipos - arr) - 1) * sizeof(T));
         m_size--;
@@ -429,10 +424,8 @@ namespace alg
     {
         iterator ipos = &arr[first - arr];
         if (first == last) return ipos;
-        if (last > arr + m_size || first > arr + m_size)
-        {
-            printf("Vector erase iterator outside range!\n");
-            return ipos;
+        if (last > arr + m_size || first > arr + m_size) {
+            throw std::out_of_range("Vector erase iterator outside range!\n");
         }
         memmove(ipos, last, (m_size - (last - arr)) * sizeof(T));
         m_size -= last - first;
@@ -608,16 +601,20 @@ namespace alg
     template<typename T>
     inline vector<T>::reference vector<T>::operator [] (size_t pos)
     {
+#ifdef _DEBUG
         if (pos > m_size)
-            printf("Vector subscript out of range!\n");
+            throw std::out_of_range("Vector subscript out of range!\n");
+#endif
         return arr[pos];
     }
 
     template<typename T>
     inline vector<T>::const_reference vector<T>::operator [] (size_t pos) const
     {
+#ifdef _DEBUG
         if (pos > m_size)
-            printf("Vector subscript out of range!\n");
+            throw std::out_of_range("Vector subscript out of range!\n");
+#endif
         return arr[pos];
     }
 
@@ -642,40 +639,32 @@ namespace alg
     template<typename T>
     inline vector<T>::reference vector<T>::front()
     {
-#ifdef _DEBUG
         if (0 == m_size)
-            printf("front() called on empty vector\n");
-#endif
+            throw std::invalid_argument("front() called on empty vector\n");
         return arr[0];
     }
 
     template<typename T>
     inline vector<T>::const_reference vector<T>::front() const
     {
-#ifdef _DEBUG
         if (0 == m_size)
-            printf("front() called on empty vector\n");
-#endif
+            throw std::invalid_argument("front() called on empty vector\n");
         return arr[0];
     }
 
     template<typename T>
     inline vector<T>::reference vector<T>::back()
     {
-#ifdef _DEBUG
         if (0 == m_size)
-            printf("back() called on empty vector\n");
-#endif
+            throw std::invalid_argument("back() called on empty vector\n");
         return arr[m_size - 1];
     }
 
     template<typename T>
     inline vector<T>::const_reference vector<T>::back() const
     {
-#ifdef _DEBUG
         if (0 == m_size)
-            printf("back() called on empty vector\n");
-#endif
+            throw std::invalid_argument("back() called on empty vector\n");
         return arr[m_size - 1];
     }
 
