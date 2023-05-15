@@ -84,7 +84,7 @@ inline T* allocator<T>::allocate(size_t n) {
 
 template< class T >
 inline T* allocator<T>::allocate(size_t n, const void*) {
-    return allocate(n);
+    return allocator<T>::allocate(n);
 }
 
 template< class T >
