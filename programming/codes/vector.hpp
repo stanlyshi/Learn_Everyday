@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <initializer_list>
 #define ALG_VECTOR_MAX_SIZE 1000000000
+#define DEFAULT_CAPACITY    4
 
 namespace alg
 {
@@ -102,9 +103,8 @@ namespace alg
     private:
         //std::unique_ptr<T[]> arr;
         T* arr;
-        size_t m_capacity_reserve   = 4;
-        size_t m_capacity           = 4;
-        size_t m_size               = 0;
+        size_t m_capacity = DEFAULT_CAPACITY;
+        size_t m_size     = 0;
 
         inline void reallocate();
     };
@@ -121,7 +121,7 @@ namespace alg
     {
         if (0 == n)
         {
-            m_capacity = m_capacity_reserve;
+            m_capacity = DEFAULT_CAPACITY;
             reallocate();
         }
         arr = new T[m_capacity];
@@ -217,7 +217,7 @@ namespace alg
             arr[i] = std::move(other.arr[i]);
         }
         other.m_size = 0;
-        other.m_capacity = other.m_capacity_reserve;
+        other.m_capacity = DEFAULT_CAPACITY;
         return *this;
     }
 
