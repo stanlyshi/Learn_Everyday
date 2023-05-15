@@ -1,22 +1,10 @@
 #pragma once
+#include <xstddef>
 #include <type_traits>
-#include <new>
+//#include <exception>
+
 namespace alg
 {
-    template<class T>
-    typename std::enable_if<std::is_object<T>::value, T*>::type  addressof(T& arg) noexcept
-    {
-        return reinterpret_cast<T*>(
-            &const_cast<char&>(
-                reinterpret_cast<const volatile char&>(arg)));
-    }
-
-    template<class T>
-    typename std::enable_if<!std::is_object<T>::value, T*>::type addressof(T& arg) noexcept
-    {
-        return &arg;
-    }
-
     template <class>
     constexpr bool is_const_v = false; // determine whether type argument is const qualified
     template <class _Ty>
@@ -96,9 +84,9 @@ namespace alg
         static_assert(sizeof(T) > 0, "value_type must be complete before calling allocate.");
         if (n == 0) {
             return nullptr;
-        } else if (n > static_cast<size_t>(-1) / sizeof(T)) {
+        } /*else if (n > static_cast<size_t>(-1) / sizeof(T)) {
             throw std::bad_array_new_length();
-        }
+        }*/
         //return new T[n];
         return static_cast<T*>(::operator new(sizeof(T) * n));
     }
