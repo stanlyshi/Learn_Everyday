@@ -22,7 +22,7 @@ namespace alg
         using reverse_iterator       = std::reverse_iterator<iterator>;
         using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
-        /*constructor/destructor*/
+        /*constructors/destructor*/
         vector() noexcept;
         explicit vector(size_t n);
         vector(const size_t n, const T& value);
@@ -759,4 +759,4 @@ namespace alg
         arr = tarr;
     }
 
-}
+} // namespace alg
