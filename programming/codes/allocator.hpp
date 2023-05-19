@@ -71,11 +71,13 @@ namespace alg
 
     template< class T >
     inline typename allocator<T>::pointer allocator<T>::address(reference x) const noexcept {
+        //return &x;
         return std::addressof(x);
     }
 
     template< class T >
     inline typename allocator<T>::const_pointer allocator<T>::address(const_reference x) const noexcept {
+        //return &x;
         return std::addressof(x);
     }
 
@@ -103,7 +105,7 @@ namespace alg
 
     template< class T >
     inline void allocator<T>::deallocate(T* p, size_t n) {
-        ASSERT(p != nullptr || n == 0, "null pointer cannot point to a block of non-zero size");
+        static_assert(p != nullptr || n == 0, "null pointer cannot point to a block of non-zero size");
         // no overflow check on the following multiply; we assume _Allocate did that check
         ::operator delete(p, sizeof(T) * n);
     }
