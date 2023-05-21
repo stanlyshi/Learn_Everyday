@@ -92,14 +92,6 @@ namespace alg
         iterator data() noexcept;
         const_iterator data() const noexcept;
 
-        /*non member functions*/
-        bool operator == (const vector<T>& other) const;
-        bool operator != (const vector<T>& other) const;
-        bool operator <  (const vector<T>& other) const;
-        bool operator <= (const vector<T>& other) const;
-        bool operator >  (const vector<T>& other) const;
-        bool operator >= (const vector<T>& other) const;
-
     private:
         //std::unique_ptr<T[]> arr;
         T* arr;
@@ -178,16 +170,14 @@ namespace alg
     }
 
     template<typename T>
-    vector<T>::~vector()
-    {
+    vector<T>::~vector() {
         if (nullptr != arr)
             delete[] arr;
     }
 
     /*assignment*/
     template<typename T>
-    vector<T>& vector<T>::operator = (const vector<T>& other)
-    {
+    vector<T>& vector<T>::operator = (const vector<T>& other) {
         if (&other == this) {
             return *this;
         }
@@ -203,8 +193,7 @@ namespace alg
     }
 
     template<typename T>
-    vector<T>& vector<T>::operator = (vector<T>&& other) noexcept
-    {
+    vector<T>& vector<T>::operator = (vector<T>&& other) noexcept {
         if (&other == this) {
             return *this;
         }
@@ -222,8 +211,7 @@ namespace alg
     }
 
     template <typename T>
-    vector<T>& vector<T>::operator = (std::initializer_list<T> ilist)
-    {
+    vector<T>& vector<T>::operator = (std::initializer_list<T> ilist) {
         if (ilist.size() > m_capacity) {
             m_capacity = ilist.size() << 2;
             reallocate();
@@ -235,8 +223,7 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::assign(const size_t count, const T& value)
-    {
+    inline void vector<T>::assign(const size_t count, const T& value) {
         if (count > m_capacity)
         {
             m_capacity = count << 2;
@@ -249,8 +236,7 @@ namespace alg
 
     template<typename T>
     template <class InputIt>
-    inline void vector<T>::assign(InputIt first, InputIt last)
-    {
+    inline void vector<T>::assign(InputIt first, InputIt last) {
         size_t newSize = last - first;
         if (newSize > m_capacity) {
             m_capacity = newSize << 2;
@@ -262,8 +248,7 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::assign(std::initializer_list<T> ilist)
-    {
+    inline void vector<T>::assign(std::initializer_list<T> ilist) {
         if (ilist.size() > m_capacity) {
             m_capacity = ilist.size() << 2;
             reallocate();
@@ -275,8 +260,7 @@ namespace alg
 
     /*modifiers*/
     template<typename T>
-    inline void vector<T>::push_back(const T& value)
-    {
+    inline void vector<T>::push_back(const T& value) {
         if (m_size == m_capacity) {
             m_capacity <<= 2;
             reallocate();
@@ -285,8 +269,7 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::push_back(T&& value)
-    {
+    inline void vector<T>::push_back(T&& value) {
         if (m_size == m_capacity) {
             m_capacity <<= 2;
             reallocate();
@@ -295,8 +278,7 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::pop_back()
-    {
+    inline void vector<T>::pop_back() {
         m_size--;
     }
 
@@ -312,8 +294,7 @@ namespace alg
 
     template<typename T>
     template <class ... Args>
-    inline vector<T>::iterator vector<T>::emplace(const_iterator pos, Args&&... args)
-    {
+    inline vector<T>::iterator vector<T>::emplace(const_iterator pos, Args&&... args) {
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         if (ipos > arr + m_size) {
@@ -331,20 +312,17 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, const T& value)
-    {
+    inline vector<T>::iterator vector<T>::insert(const_iterator pos, const T& value) {
         return emplace(pos, std::move(value));
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, T&& value)
-    {
+    inline vector<T>::iterator vector<T>::insert(const_iterator pos, T&& value) {
         return emplace(pos, value);
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, size_t count, const T& value)
-    {
+    inline vector<T>::iterator vector<T>::insert(const_iterator pos, size_t count, const T& value) {
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         if (ipos > arr + m_size || !count) {
@@ -364,8 +342,7 @@ namespace alg
 
     template<typename T>
     template<class InputIt>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, InputIt first, InputIt last)
-    {
+    inline vector<T>::iterator vector<T>::insert(const_iterator pos, InputIt first, InputIt last) {
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         size_t count = last - first;
@@ -385,8 +362,7 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, std::initializer_list<T> ilist)
-    {
+    inline vector<T>::iterator vector<T>::insert(const_iterator pos, std::initializer_list<T> ilist) {
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         size_t count = ilist.size();
@@ -408,8 +384,7 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::erase(const_iterator pos)
-    {
+    inline vector<T>::iterator vector<T>::erase(const_iterator pos) {
         iterator ipos = &arr[pos - arr];
         if (ipos > arr + m_size) {
             throw std::out_of_range("Vector erase iterator outside range!\n");
@@ -420,8 +395,7 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::erase(const_iterator first, const_iterator last)
-    {
+    inline vector<T>::iterator vector<T>::erase(const_iterator first, const_iterator last) {
         iterator ipos = &arr[first - arr];
         if (first == last) return ipos;
         if (last > arr + m_size || first > arr + m_size) {
@@ -433,14 +407,12 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::clear() noexcept
-    {
+    inline void vector<T>::clear() noexcept {
         m_size = 0;
     }
 
     template<typename T>
-    inline void vector<T>::swap(vector<T>& other) noexcept
-    {
+    inline void vector<T>::swap(vector<T>& other) noexcept {
         if (&other != this) {
             size_t t_size     = m_size;
             size_t t_capacity = m_capacity;
@@ -498,8 +470,7 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::const_iterator vector<T>::cbegin() const noexcept
-    {
+    inline vector<T>::const_iterator vector<T>::cbegin() const noexcept {
         return arr;
     }
 
@@ -509,14 +480,12 @@ namespace alg
     }
 
     template<typename T>
-    vector<T>::const_reverse_iterator vector<T>::crbegin() const noexcept
-    {
+    vector<T>::const_reverse_iterator vector<T>::crbegin() const noexcept {
         return const_reverse_iterator(arr + m_size);
     }
 
     template<typename T>
-    vector<T>::const_reverse_iterator vector<T>::crend() const noexcept
-    {
+    vector<T>::const_reverse_iterator vector<T>::crend() const noexcept {
         return const_reverse_iterator(arr);
     }
 
@@ -543,8 +512,7 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::resize(size_t size)
-    {
+    inline void vector<T>::resize(size_t size) {
         if (size > m_size)
         {
             if (size > m_capacity)
@@ -562,8 +530,7 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::resize(size_t size, const T& value)
-    {
+    inline void vector<T>::resize(size_t size, const T& value) {
         if (size > m_size)
         {
             if (size > m_capacity)
@@ -581,8 +548,7 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::reserve(size_t size)
-    {
+    inline void vector<T>::reserve(size_t size) {
         if (size > m_capacity)
         {
             m_capacity = size;
@@ -593,14 +559,12 @@ namespace alg
     }
 
     template<typename T>
-    inline void vector<T>::shrink_to_fit()
-    {
+    inline void vector<T>::shrink_to_fit() {
         m_capacity = m_size;
     }
 
     template<typename T>
-    inline vector<T>::reference vector<T>::operator [] (size_t pos)
-    {
+    inline vector<T>::reference vector<T>::operator [] (size_t pos) {
 #ifdef _DEBUG
         if (pos > m_size)
             throw std::out_of_range("Vector subscript out of range!\n");
@@ -609,8 +573,7 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::const_reference vector<T>::operator [] (size_t pos) const
-    {
+    inline vector<T>::const_reference vector<T>::operator [] (size_t pos) const {
 #ifdef _DEBUG
         if (pos > m_size)
             throw std::out_of_range("Vector subscript out of range!\n");
@@ -619,8 +582,7 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::reference vector<T>::at(const size_t pos)
-    {
+    inline vector<T>::reference vector<T>::at(const size_t pos) {
         if (pos < m_size)
             return arr[pos];
         else
@@ -628,8 +590,7 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::const_reference vector<T>::at(const size_t pos) const
-    {
+    inline vector<T>::const_reference vector<T>::at(const size_t pos) const {
         if (pos < m_size)
             return arr[pos];
         else
@@ -637,32 +598,28 @@ namespace alg
     }
 
     template<typename T>
-    inline vector<T>::reference vector<T>::front()
-    {
+    inline vector<T>::reference vector<T>::front() {
         if (0 == m_size)
             throw std::invalid_argument("front() called on empty vector\n");
         return arr[0];
     }
 
     template<typename T>
-    inline vector<T>::const_reference vector<T>::front() const
-    {
+    inline vector<T>::const_reference vector<T>::front() const {
         if (0 == m_size)
             throw std::invalid_argument("front() called on empty vector\n");
         return arr[0];
     }
 
     template<typename T>
-    inline vector<T>::reference vector<T>::back()
-    {
+    inline vector<T>::reference vector<T>::back() {
         if (0 == m_size)
             throw std::invalid_argument("back() called on empty vector\n");
         return arr[m_size - 1];
     }
 
     template<typename T>
-    inline vector<T>::const_reference vector<T>::back() const
-    {
+    inline vector<T>::const_reference vector<T>::back() const {
         if (0 == m_size)
             throw std::invalid_argument("back() called on empty vector\n");
         return arr[m_size - 1];
@@ -678,74 +635,68 @@ namespace alg
         return arr;
     }
 
+    /*private fuctions*/
     template<typename T>
-    inline bool vector<T>::operator==(const vector<T>& other) const
-    {
-        if (m_size != other.m_size) return false;
-        for (size_t i = 0; i < m_size; i++) {
-            if (arr[i] != other.arr[i]) return false;
+    inline void vector<T>::reallocate() {
+        T* tarr = new T[m_capacity];
+        memcpy(tarr, arr, m_size * sizeof(T));
+        delete[] arr;
+        arr = tarr;
+    }
+
+    /*non member functions*/
+    template<typename T>
+    bool operator==(const vector<T>& lhs, const vector<T>& rhs) {
+        if (lhs.m_size != rhs.m_size) return false;
+        for (size_t i = 0; i < lhs.m_size; i++) {
+            if (lhs.arr[i] != rhs.arr[i]) return false;
         }
         return true;
     }
 
     template<typename T>
-    inline bool vector<T>::operator!=(const vector<T>& other) const
-    {
-        if (m_size != other.m_size) return true;
-        for (size_t i = 0; i < m_size; i++) {
-            if (arr[i] != other.arr[i]) return true;
+    bool operator!=(const vector<T>& lhs, const vector<T>& rhs)  {
+        if (lhs.m_size != rhs.m_size) return true;
+        for (size_t i = 0; i < lhs.m_size; i++) {
+            if (lhs.arr[i] != rhs.arr[i]) return true;
         }
         return false;
     }
 
     template<typename T>
-    inline bool vector<T>::operator<(const vector<T>& other) const
-    {
-        size_t size = m_size < other.m_size ? m_size : other.m_size;
+    bool operator<(const vector<T>& lhs, const vector<T>& rhs)  {
+        size_t size = lhs.m_size < rhs.m_size ? lhs.m_size : rhs.m_size;
         for (size_t i = 0; i < size; i++) {
-            if (arr[i] != other.arr[i]) return arr[i] < other.arr[i];
+            if (lhs.arr[i] != rhs.arr[i]) return lhs.arr[i] < rhs.arr[i];
         }
-        return m_size < other.m_size;
+        return lhs.m_size < rhs.m_size;
     }
 
     template<typename T>
-    inline bool vector<T>::operator<=(const vector<T>& other) const
-    {
-        size_t size = m_size < other.m_size ? m_size : other.m_size;
+    bool operator<=(const vector<T>& lhs, const vector<T>& rhs) {
+        size_t size = lhs.m_size < rhs.m_size ? lhs.m_size : rhs.m_size;
         for (size_t i = 0; i < size; i++) {
-            if (arr[i] != other.arr[i]) return arr[i] <= other.arr[i];
+            if (lhs.arr[i] != rhs.arr[i]) return lhs.arr[i] <= rhs.arr[i];
         }
-        return m_size <= other.m_size;
+        return lhs.m_size <= rhs.m_size;
     }
 
     template<typename T>
-    inline bool vector<T>::operator>(const vector<T>& other) const
-    {
-        size_t size = m_size < other.m_size ? m_size : other.m_size;
+    bool operator>(const vector<T>& lhs, const vector<T>& rhs) {
+        size_t size = lhs.m_size < rhs.m_size ? lhs.m_size : rhs.m_size;
         for (size_t i = 0; i < size; i++) {
-            if (arr[i] != other.arr[i]) arr[i] > other.arr[i];
+            if (lhs.arr[i] != rhs.arr[i]) lhs.arr[i] > rhs.arr[i];
         }
-        return m_size > other.m_size;
+        return lhs.m_size > rhs.m_size;
     }
 
     template<typename T>
-    inline bool vector<T>::operator>=(const vector<T>& other) const
-    {
-        size_t size = m_size < other.m_size ? m_size : other.m_size;
+    bool operator>=(const vector<T>& lhs, const vector<T>& rhs) {
+        size_t size = lhs.m_size < rhs.m_size ? lhs.m_size : rhs.m_size;
         for (size_t i = 0; i < size; i++) {
-            if (arr[i] != other.arr[i]) return arr[i] > other.arr[i];
+            if (lhs.arr[i] != rhs.arr[i]) return lhs.arr[i] > rhs.arr[i];
         }
-        return m_size >= other.m_size;
-    }
-
-    /*private fuctions*/
-    template<typename T>
-    inline void vector<T>::reallocate()
-    {
-        T* tarr = new T[m_capacity];
-        memcpy(tarr, arr, m_size * sizeof(T));
-        delete[] arr;
-        arr = tarr;
+        return lhs.m_size >= rhs.m_size;
     }
 
 } // namespace alg
