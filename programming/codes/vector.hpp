@@ -3,10 +3,10 @@
 #include <iterator>
 #include <stdexcept>
 #include <initializer_list>
-#define ALG_VECTOR_MAX_SIZE 1000000000
+#define LIB_VECTOR_MAX_SIZE 1000000000
 #define DEFAULT_CAPACITY    4
-
-namespace alg
+#define SHIFT_BITS          2
+namespace lib
 {
     template <typename T>
     class vector
@@ -109,7 +109,7 @@ namespace alg
 
     template<typename T>
     vector<T>::vector(size_t n)
-        : m_capacity(n << 2), m_size(n)
+        : m_capacity(n << SHIFT_BITS), m_size(n)
     {
         if (0 == n)
         {
@@ -123,7 +123,7 @@ namespace alg
 
     template<typename T>
     vector<T>::vector(const size_t n, const T& value)
-        : m_capacity(n << 2), m_size(n)
+        : m_capacity(n << SHIFT_BITS), m_size(n)
     {
         arr = new T[m_capacity];
         for (size_t i = 0; i < n; i++)
@@ -135,7 +135,7 @@ namespace alg
     template<typename T>
     template <class InputIt>
     vector<T>::vector(InputIt first, InputIt last)
-        : m_size(last - first), m_capacity(m_size << 2)
+        : m_size(last - first), m_capacity(m_size << SHIFT_BITS)
     {
         arr = new T[m_capacity];
         for (size_t i = 0; i < m_size; i++)
@@ -144,7 +144,7 @@ namespace alg
 
     template<typename T>
     vector<T>::vector(std::initializer_list<T> ilist)
-        :m_capacity(ilist.size() << 2)
+        :m_capacity(ilist.size() << SHIFT_BITS)
     {
         arr = new T[m_capacity];
         for (auto& item : ilist)
@@ -213,7 +213,7 @@ namespace alg
     template <typename T>
     vector<T>& vector<T>::operator = (std::initializer_list<T> ilist) {
         if (ilist.size() > m_capacity) {
-            m_capacity = ilist.size() << 2;
+            m_capacity = ilist.size() << SHIFT_BITS;
             reallocate();
         }
         m_size = 0;
@@ -226,7 +226,7 @@ namespace alg
     inline void vector<T>::assign(const size_t count, const T& value) {
         if (count > m_capacity)
         {
-            m_capacity = count << 2;
+            m_capacity = count << SHIFT_BITS;
             reallocate();
         }
         m_size = count;
@@ -239,7 +239,7 @@ namespace alg
     inline void vector<T>::assign(InputIt first, InputIt last) {
         size_t newSize = last - first;
         if (newSize > m_capacity) {
-            m_capacity = newSize << 2;
+            m_capacity = newSize << SHIFT_BITS;
             reallocate();
         }
         m_size = newSize;
@@ -250,7 +250,7 @@ namespace alg
     template<typename T>
     inline void vector<T>::assign(std::initializer_list<T> ilist) {
         if (ilist.size() > m_capacity) {
-            m_capacity = ilist.size() << 2;
+            m_capacity = ilist.size() << SHIFT_BITS;
             reallocate();
         }
         m_size = 0;
@@ -262,7 +262,7 @@ namespace alg
     template<typename T>
     inline void vector<T>::push_back(const T& value) {
         if (m_size == m_capacity) {
-            m_capacity <<= 2;
+            m_capacity <<= SHIFT_BITS;
             reallocate();
         }
         arr[m_size++] = value;
@@ -271,7 +271,7 @@ namespace alg
     template<typename T>
     inline void vector<T>::push_back(T&& value) {
         if (m_size == m_capacity) {
-            m_capacity <<= 2;
+            m_capacity <<= SHIFT_BITS;
             reallocate();
         }
         arr[m_size++] = std::move(value);
@@ -286,7 +286,7 @@ namespace alg
     template<class ...Args>
     inline void vector<T>::emplace_back(Args&&... args) {
         if (m_size == m_capacity) {
-            m_capacity <<= 2;
+            m_capacity <<= SHIFT_BITS;
             reallocate();
         }
         arr[m_size++] = std::move(T(std::forward<Args>(args)...));
@@ -301,7 +301,7 @@ namespace alg
             throw std::out_of_range("Vector emplace iterator outside range!\n");
         }
         if (m_size == m_capacity) {
-            m_capacity <<= 2;
+            m_capacity <<= SHIFT_BITS;
             reallocate();
             ipos = &arr[offset_pos];
         }
@@ -329,7 +329,7 @@ namespace alg
             throw std::out_of_range("Vector insert iterator outside range, or nothing to be inserted!\n");
         }
         if (m_size + count > m_capacity) {
-            m_capacity = (m_size + count) << 2;
+            m_capacity = (m_size + count) << SHIFT_BITS;
             reallocate();
             ipos = &arr[offset_pos];
         }        
@@ -350,7 +350,7 @@ namespace alg
             throw std::out_of_range("Vector insert iterator outside range, or nothing to be inserted!\n");
         }
         if (m_size + count > m_capacity) {
-            m_capacity = (m_size + count) << 2;
+            m_capacity = (m_size + count) << SHIFT_BITS;
             reallocate();
             ipos = &arr[offset_pos];
         }        
@@ -370,7 +370,7 @@ namespace alg
             throw std::out_of_range("Vector insert iterator outside range, or nothing to be inserted!\n");
         }
         if (m_size + count > m_capacity) {
-            m_capacity = (m_size + count) << 2;
+            m_capacity = (m_size + count) << SHIFT_BITS;
             reallocate();
             ipos = &arr[offset_pos];
         }        
@@ -503,7 +503,7 @@ namespace alg
 
     template <typename T>
     size_t vector<T>::max_size() const noexcept {
-        return ALG_VECTOR_MAX_SIZE;
+        return LIB_VECTOR_MAX_SIZE;
     }
 
     template <typename T>
@@ -699,4 +699,4 @@ namespace alg
         return lhs.m_size >= rhs.m_size;
     }
 
-} // namespace alg
+} // namespace lib

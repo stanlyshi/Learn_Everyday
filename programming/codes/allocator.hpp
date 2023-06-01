@@ -3,7 +3,7 @@
 #include <type_traits>
 //#include <exception>
 
-namespace alg
+namespace lib
 {
     template <class>
     constexpr bool is_const_v = false; // determine whether type argument is const qualified
@@ -128,4 +128,4 @@ namespace alg
         p->~U();
     }
 
-} // namespace alg
+} // namespace lib
