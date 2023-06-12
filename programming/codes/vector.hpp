@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <initializer_list>
 #define LIB_VECTOR_MAX_SIZE 1000000000
-#define DEFAULT_CAPACITY    4
+#define DEFAULT_CAPACITY    4     // default capacity of vector.
 #define SHIFT_BITS          2
 namespace lib
 {
@@ -21,6 +21,15 @@ namespace lib
         using const_iterator         = const T*;
         using reverse_iterator       = std::reverse_iterator<iterator>;
         using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+        
+        //typedef T                                       value_type;
+        //typedef T&                                      reference;
+        //typedef const T&                                const_reference;
+        //typedef T&&                                     right_reference;
+        //typedef T*                                      iterator;
+        //typedef const T*                                const_iterator;
+        //typedef std::reverse_iterator<iterator>         reverse_iterator;
+        //typedef std::reverse_iterator<const_iterator>   const_reverse_iterator;
 
         /*constructors/destructor*/
         vector() noexcept;
@@ -294,7 +303,7 @@ namespace lib
 
     template<typename T>
     template <class ... Args>
-    inline vector<T>::iterator vector<T>::emplace(const_iterator pos, Args&&... args) {
+    inline typename vector<T>::iterator vector<T>::emplace(const_iterator pos, Args&&... args) {
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         if (ipos > arr + m_size) {
@@ -312,17 +321,17 @@ namespace lib
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, const T& value) {
+    inline typename vector<T>::iterator vector<T>::insert(const_iterator pos, const T& value) {
         return emplace(pos, std::move(value));
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, T&& value) {
+    inline typename vector<T>::iterator vector<T>::insert(const_iterator pos, T&& value) {
         return emplace(pos, value);
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, size_t count, const T& value) {
+    inline typename vector<T>::iterator vector<T>::insert(const_iterator pos, size_t count, const T& value) {
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         if (ipos > arr + m_size || !count) {
@@ -342,7 +351,7 @@ namespace lib
 
     template<typename T>
     template<class InputIt>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, InputIt first, InputIt last) {
+    inline typename vector<T>::iterator vector<T>::insert(const_iterator pos, InputIt first, InputIt last) {
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         size_t count = last - first;
@@ -362,7 +371,7 @@ namespace lib
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::insert(const_iterator pos, std::initializer_list<T> ilist) {
+    inline typename vector<T>::iterator vector<T>::insert(const_iterator pos, std::initializer_list<T> ilist) {
         size_t offset_pos = pos - arr;
         iterator ipos = &arr[offset_pos];
         size_t count = ilist.size();
@@ -384,7 +393,7 @@ namespace lib
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::erase(const_iterator pos) {
+    inline typename vector<T>::iterator vector<T>::erase(const_iterator pos) {
         iterator ipos = &arr[pos - arr];
         if (ipos > arr + m_size) {
             throw std::out_of_range("Vector erase iterator outside range!\n");
@@ -395,7 +404,7 @@ namespace lib
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::erase(const_iterator first, const_iterator last) {
+    inline typename vector<T>::iterator vector<T>::erase(const_iterator first, const_iterator last) {
         iterator ipos = &arr[first - arr];
         if (first == last) return ipos;
         if (last > arr + m_size || first > arr + m_size) {
@@ -430,62 +439,62 @@ namespace lib
 
     /*iterators*/
     template<typename T>
-    inline vector<T>::iterator vector<T>::begin() noexcept {
+    inline typename vector<T>::iterator vector<T>::begin() noexcept {
         return arr;
     }
 
     template<typename T>
-    inline vector<T>::const_iterator vector<T>::begin() const noexcept {
+    inline typename vector<T>::const_iterator vector<T>::begin() const noexcept {
         return arr;
     }
 
     template<typename T>
-    vector<T>::iterator vector<T>::end() noexcept {
+    inline typename vector<T>::iterator vector<T>::end() noexcept {
         return arr + m_size;
     }
 
     template<typename T>
-    vector<T>::const_iterator vector<T>::end() const noexcept {
+    inline typename vector<T>::const_iterator vector<T>::end() const noexcept {
         return const_iterator(arr + m_size);
     }
 
     template<typename T>
-    vector<T>::reverse_iterator vector<T>::rbegin() noexcept {
+    inline typename vector<T>::reverse_iterator vector<T>::rbegin() noexcept {
         return reverse_iterator(arr + m_size);
     }
 
     template<typename T>
-    vector<T>::const_reverse_iterator vector<T>::rbegin() const noexcept {
+    inline typename vector<T>::const_reverse_iterator vector<T>::rbegin() const noexcept {
         return const_reverse_iterator(arr + m_size);
     }
 
     template<typename T>
-    vector<T>::reverse_iterator vector<T>::rend() noexcept {
+    inline typename vector<T>::reverse_iterator vector<T>::rend() noexcept {
         return reverse_iterator(arr);
     }
 
     template<typename T>
-    vector<T>::const_reverse_iterator vector<T>::rend() const noexcept {
+    inline typename vector<T>::const_reverse_iterator vector<T>::rend() const noexcept {
         return const_reverse_iterator(arr);
     }
 
     template<typename T>
-    inline vector<T>::const_iterator vector<T>::cbegin() const noexcept {
+    inline typename vector<T>::const_iterator vector<T>::cbegin() const noexcept {
         return arr;
     }
 
     template<typename T>
-    vector<T>::const_iterator vector<T>::cend() const noexcept {
+    inline typename vector<T>::const_iterator vector<T>::cend() const noexcept {
         return arr + m_size;
     }
 
     template<typename T>
-    vector<T>::const_reverse_iterator vector<T>::crbegin() const noexcept {
+    inline typename vector<T>::const_reverse_iterator vector<T>::crbegin() const noexcept {
         return const_reverse_iterator(arr + m_size);
     }
 
     template<typename T>
-    vector<T>::const_reverse_iterator vector<T>::crend() const noexcept {
+    inline typename vector<T>::const_reverse_iterator vector<T>::crend() const noexcept {
         return const_reverse_iterator(arr);
     }
 
@@ -549,22 +558,23 @@ namespace lib
 
     template<typename T>
     inline void vector<T>::reserve(size_t size) {
-        if (size > m_capacity)
+        // increase capacity to newCapacity(without geometric growth), provide strong guarantee        
+        if (size > m_capacity)  // something to do (reserve() never shrinks)
         {
             m_capacity = size;
             reallocate();
         }
-        else if (size < m_size)
-            m_capacity = m_size;
+        //else if (size < m_size)
+        //    m_capacity = m_size;
     }
 
     template<typename T>
     inline void vector<T>::shrink_to_fit() {
-        m_capacity = m_size;
+        m_capacity = m_size;    // reduce capacity to size
     }
 
     template<typename T>
-    inline vector<T>::reference vector<T>::operator [] (size_t pos) {
+    inline typename vector<T>::reference vector<T>::operator [] (size_t pos) {
 #ifdef _DEBUG
         if (pos > m_size)
             throw std::out_of_range("Vector subscript out of range!\n");
@@ -573,7 +583,7 @@ namespace lib
     }
 
     template<typename T>
-    inline vector<T>::const_reference vector<T>::operator [] (size_t pos) const {
+    inline typename vector<T>::const_reference vector<T>::operator [] (size_t pos) const {
 #ifdef _DEBUG
         if (pos > m_size)
             throw std::out_of_range("Vector subscript out of range!\n");
@@ -582,7 +592,7 @@ namespace lib
     }
 
     template<typename T>
-    inline vector<T>::reference vector<T>::at(const size_t pos) {
+    inline typename vector<T>::reference vector<T>::at(const size_t pos) {
         if (pos < m_size)
             return arr[pos];
         else
@@ -590,7 +600,7 @@ namespace lib
     }
 
     template<typename T>
-    inline vector<T>::const_reference vector<T>::at(const size_t pos) const {
+    inline typename vector<T>::const_reference vector<T>::at(const size_t pos) const {
         if (pos < m_size)
             return arr[pos];
         else
@@ -598,40 +608,40 @@ namespace lib
     }
 
     template<typename T>
-    inline vector<T>::reference vector<T>::front() {
+    inline typename vector<T>::reference vector<T>::front() {
         if (0 == m_size)
             throw std::invalid_argument("front() called on empty vector\n");
         return arr[0];
     }
 
     template<typename T>
-    inline vector<T>::const_reference vector<T>::front() const {
+    inline typename vector<T>::const_reference vector<T>::front() const {
         if (0 == m_size)
             throw std::invalid_argument("front() called on empty vector\n");
         return arr[0];
     }
 
     template<typename T>
-    inline vector<T>::reference vector<T>::back() {
+    inline typename vector<T>::reference vector<T>::back() {
         if (0 == m_size)
             throw std::invalid_argument("back() called on empty vector\n");
         return arr[m_size - 1];
     }
 
     template<typename T>
-    inline vector<T>::const_reference vector<T>::back() const {
+    inline typename vector<T>::const_reference vector<T>::back() const {
         if (0 == m_size)
             throw std::invalid_argument("back() called on empty vector\n");
         return arr[m_size - 1];
     }
 
     template<typename T>
-    inline vector<T>::iterator vector<T>::data() noexcept {
+    inline typename vector<T>::iterator vector<T>::data() noexcept {
         return arr;
     }
 
     template<typename T>
-    inline vector<T>::const_iterator vector<T>::data() const noexcept {
+    inline typename vector<T>::const_iterator vector<T>::data() const noexcept {
         return arr;
     }
 
